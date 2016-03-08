@@ -3,6 +3,9 @@ var gulp = require('gulp');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 
+//img
+var imagemin = require('gulp-imagemin');
+
 // html
 var htmlmin = require('gulp-htmlmin');
 
@@ -23,6 +26,7 @@ var bases = {
 var paths = {
 	html: '*.html',
 	js: 'js/*.js',
+	lib: 'js/lib/*',
 	less: 'less/*.less'
 };
 
@@ -56,10 +60,15 @@ gulp.task('compress', function() {
 		.pipe(gulp.dest(bases.build + 'js'));
 });
 
+gulp.task('copy', function() {
+	return gulp.src(paths.lib, {cwd: bases.app})
+		.pipe(gulp.dest(bases.build + 'js'));
+});
+
 gulp.task('watch', function() {
 	gulp.watch(bases.app + paths.html, ['html']);
 	gulp.watch(bases.app + paths.less, ['css']);
-	gulp.watch(bases.app + paths.js, ['lint', 'compress']);
+	gulp.watch(bases.app + paths.js, ['lint', 'compress', 'copy']);
 });
 
-gulp.task('default', ['lint', 'compress', 'html', 'css', 'watch']);
+gulp.task('default', ['lint', 'compress', 'copy', 'html', 'css', 'watch']);

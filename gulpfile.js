@@ -12,7 +12,7 @@ var cssmin = require('gulp-minify-css');
 
 // js
 var hint = require('gulp-jshint');
-var	jsmin = require('gulp-uglify');
+var jsmin = require('gulp-uglify');
 
 // paths
 var bases = {
@@ -25,11 +25,6 @@ var paths = {
 	js: 'js/*.js',
 	less: 'less/*.less'
 };
-
-gulp.task('clean', function() {
-	return gulp.src(bases.build)
-		.pipe(clean());
-});
 
 gulp.task('html', function() {
 		return gulp.src(paths.html, {cwd: bases.app})

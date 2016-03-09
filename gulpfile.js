@@ -1,35 +1,35 @@
-	// gulp
-var gulp = require('gulp'),
-	rename = require('gulp-rename'),
-	concat = require('gulp-concat'),
+// gulp
+var gulp = require('gulp');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
 
-	//img
-	imagemin = require('gulp-imagemin'),
+//img
+var imagemin = require('gulp-imagemin');
 
-	// html
-	htmlmin = require('gulp-htmlmin'),
+// html
+var htmlmin = require('gulp-htmlmin');
 
-	// css
-	less = require('gulp-less'),
-	cssmin = require('gulp-minify-css'),
+// css
+var less = require('gulp-less');
+var cssmin = require('gulp-minify-css');
 
-	// js
-	hint = require('gulp-jshint'),
-	jsmin = require('gulp-uglify'),
+// js
+var hint = require('gulp-jshint');
+var jsmin = require('gulp-uglify');
 
-	// paths
-	bases = {
-		app: 'src/',
-		build: 'build/'
-	},
+// paths
+var bases = {
+	app: 'src/',
+	build: 'build/'
+};
 
-	paths = {
-		html: '*.html',
-		js: 'js/*.js',
-		lib: 'js/lib/*',
-		less: 'less/*.less',
-		images: 'images/'
-	};
+var paths = {
+	html: '*.html',
+	js: 'js/*.js',
+	lib: 'js/lib/*',
+	less: 'less/*.less',
+	images: 'images/'
+};
 
 gulp.task('html', function() {
 		return gulp.src(paths.html, {cwd: bases.app})

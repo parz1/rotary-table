@@ -20,8 +20,7 @@ _mp.init = function() {
     this.loader = new createjs.LoadQueue(false);
     this.loader.on('fileload', this.handleFileLoad, null, false, this);
     this.loader.on('progress', this.handleFileProgress, null, false, this);
-    this.handleComplete(null, this);
-    //this.loader.on('complete', this.handleComplete, null, false, this);
+    this.loader.on('complete', this.handleComplete, null, false, this);
     this.loader.loadManifest(manifest);
 
 };

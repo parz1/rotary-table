@@ -15,7 +15,6 @@
     "canvas",
     "javascript"
   ],
-  "author": "Szymon Kabelis",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/eskab/createjsbase/issues"

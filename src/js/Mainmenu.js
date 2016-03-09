@@ -4,8 +4,10 @@
 var _mnp;
 
 function MainMenu(main) {
+
     this.main = main;
     this.isInited = false;
+
 }
 
 _mnp = MainMenu.prototype;

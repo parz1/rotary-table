@@ -1,34 +1,35 @@
-// gulp
-var gulp = require('gulp');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
+	// gulp
+var gulp = require('gulp'),
+	rename = require('gulp-rename'),
+	concat = require('gulp-concat'),
 
-//img
-var imagemin = require('gulp-imagemin');
+	//img
+	imagemin = require('gulp-imagemin'),
 
-// html
-var htmlmin = require('gulp-htmlmin');
+	// html
+	htmlmin = require('gulp-htmlmin'),
 
-// css
-var less = require('gulp-less');
-var cssmin = require('gulp-minify-css');
+	// css
+	less = require('gulp-less'),
+	cssmin = require('gulp-minify-css'),
 
-// js
-var hint = require('gulp-jshint');
-var jsmin = require('gulp-uglify');
+	// js
+	hint = require('gulp-jshint'),
+	jsmin = require('gulp-uglify'),
 
-// paths
-var bases = {
-	app: 'src/',
-	build: 'build/'
-};
+	// paths
+	bases = {
+		app: 'src/',
+		build: 'build/'
+	},
 
-var paths = {
-	html: '*.html',
-	js: 'js/*.js',
-	lib: 'js/lib/*',
-	less: 'less/*.less'
-};
+	paths = {
+		html: '*.html',
+		js: 'js/*.js',
+		lib: 'js/lib/*',
+		less: 'less/*.less',
+		images: 'images/'
+	};
 
 gulp.task('html', function() {
 		return gulp.src(paths.html, {cwd: bases.app})
@@ -63,6 +64,12 @@ gulp.task('compress', function() {
 gulp.task('copy', function() {
 	return gulp.src(paths.lib, {cwd: bases.app})
 		.pipe(gulp.dest(bases.build + 'js'));
+});
+
+gulp.task('imagemin', function() {
+	gulp.src(paths.images, {cwd: bases.app})
+		.pipe(imagemin())
+		.pipe(gulp.dest(bases.build + 'images'));
 });
 
 gulp.task('watch', function() {

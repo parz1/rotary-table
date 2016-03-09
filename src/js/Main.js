@@ -9,8 +9,6 @@ _mp.init = function() {
 
     var manifest;
 
-    resize();
-
     this.canvas = document.getElementById('main');
     this.preloader = document.getElementById('preloader');
     images = images || {};
@@ -46,6 +44,8 @@ _mp.handleFileProgress = function(e, that) {
 
 _mp.handleComplete = function(e, that) {
 
+    resize();
+
     that.stage = new createjs.Stage(that.canvas);
     that.stage.enableMouseOver();
 
@@ -54,11 +54,30 @@ _mp.handleComplete = function(e, that) {
 
     that.isActive = true;
 
-    resize();
+    that.displayMainMenu();
+
 };
 
 _mp.tickFn = function(e, that) {
 
     that.stage.update();
+
+};
+
+_mp.displayMainMenu = function() {
+
+    if(!this.mainMenuView) {
+        this.mainMenuView = new MainMenu(this);
+    }
+
+    this.mainMenuView.init();
+    this.currentView = this.mainMenuView;
+
+};
+
+_mp.hideMainMenu = function() {
+
+    this.mainMenuView.uninit();
+    this.currentView = null;
 
 };

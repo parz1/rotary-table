@@ -8,6 +8,8 @@ function init() {
 
     window.onresize = resize;
 
+    resize();
+
 }
 
 function resize() {

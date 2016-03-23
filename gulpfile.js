@@ -1,43 +1,44 @@
 // gulp
-var gulp = require('gulp');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
+var gulp = require('gulp'),
+	rename = require('gulp-rename'),
+	concat = require('gulp-concat'),
+	sourcemaps = require('gulp-sourcemaps'),
 
 //img
-var imagemin = require('gulp-imagemin');
+	imagemin = require('gulp-imagemin'),
 
 // html
-var htmlmin = require('gulp-htmlmin');
+	htmlmin = require('gulp-htmlmin'),
 
 // css
-var less = require('gulp-less');
-var cssmin = require('gulp-minify-css');
+	less = require('gulp-less'),
+	cssmin = require('gulp-minify-css'),
 
 // js
-var hint = require('gulp-jshint');
-var jsmin = require('gulp-uglify');
+	hint = require('gulp-jshint'),
+	jsmin = require('gulp-uglify'),
 
 // paths
-var bases = {
-	app: 'src/',
-	build: 'build/'
-};
+	bases = {
+		app: 'src/',
+		build: 'build/'
+	},
 
-var paths = {
-	html: '*.html',
-	js: 'js/*.js',
-	lib: 'js/lib/*',
-	less: 'less/*.less',
-	images: 'images/'
-};
+	paths = {
+		html: '*.html',
+		js: 'js/*.js',
+		lib: 'js/lib/*',
+		less: 'less/*.less',
+		images: 'images/'
+	};
 
-gulp.task('html', function() {
+gulp.task('htmlmin', function() {
 		return gulp.src(paths.html, {cwd: bases.app})
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest(bases.build));
 });
 
-gulp.task('css', function() {
+gulp.task('less', function() {
 	return gulp.src(paths.less, {cwd: bases.app})
 		.pipe(less())
 		.pipe(gulp.dest(bases.build + 'css'))
@@ -52,8 +53,11 @@ gulp.task('lint', function() {
 		.pipe(hint.reporter('default'));
 });
 
-gulp.task('compress', function() {
+gulp.task('scripts', function() {
 	return gulp.src(paths.js, {cwd: bases.app})
+		.pipe(sourcemaps.init())
+			.pipe(hint())
+			.pipe(hint.reporter('default'))
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(bases.build + 'js'))
 		.pipe(rename('app.min.js'))
@@ -75,7 +79,7 @@ gulp.task('imagemin', function() {
 gulp.task('watch', function() {
 	gulp.watch(bases.app + paths.html, ['html']);
 	gulp.watch(bases.app + paths.less, ['css']);
-	gulp.watch(bases.app + paths.js, ['lint', 'compress', 'copy']);
+	gulp.watch(bases.app + paths.js, ['scripts', 'copy']);
 });
 
-gulp.task('default', ['lint', 'compress', 'copy', 'html', 'css', 'watch']);
+gulp.task('default', ['lint', 'scripts', 'copy', 'html', 'css', 'watch']);

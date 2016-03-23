@@ -1,6 +1,6 @@
 var images, main;
 
-var Main = function () {};
+function Main() {}
 
 Main.prototype = {
 
@@ -75,3 +75,5 @@ Main.prototype = {
     }
 
 };
+
+module.exports = Main;

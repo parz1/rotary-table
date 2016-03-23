@@ -1,9 +1,9 @@
-var MainMenu = function(main) {
+function MainMenu(main) {
 
     this.main = main;
     this.isInited = false;
 
-};
+}
 
 MainMenu.prototype = {
 
@@ -30,3 +30,5 @@ MainMenu.prototype = {
     }
 
 };
+
+module.exports = MainMenu;

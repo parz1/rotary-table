@@ -8,3 +8,4 @@ Template for CreateJS projects.
 * move preload view to canvas []
 * nice looking preload view with custom fonts []
 * testing image libraries []
+* scaffolding app

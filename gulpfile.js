@@ -3,9 +3,7 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	concat = require('gulp-concat'),
 	sourcemaps = require('gulp-sourcemaps'),
-	browserify = require('browserify'),
-	watchify = require('watchify'),
-	source = require('vinyl-source-stream'),
+	browserify = require('gulp-browserify'),
 
 //img
 	imagemin = require('gulp-imagemin'),
@@ -36,23 +34,11 @@ var gulp = require('gulp'),
 	};
 
 gulp.task('browserify', function() {
-	return browserify('src/js/app.js')
-		.bundle()
-		.pipe(source('built.js'))
-		.pipe(gulp.dest('build/js/'));
-});
+   gulp.src(bases.app + 'js/app.js')
+       .pipe(browserify({
 
-gulp.task('brwatch', function() {
-	var bundler = watchify('src/js/app.js');
-	bundler.on('update', rebundle);
-
-	function rebundle() {
-		return bundler.bundle()
-			.pipe(source('built.js'))
-			.pipe(gulp.dest('build/js/'));
-	}
-
-	return rebundle();
+       }))
+       .pipe(gulp.dest(bases.build + 'js'));
 });
 
 gulp.task('htmlmin', function() {

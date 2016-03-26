@@ -5,13 +5,15 @@ window.app = {};
 // global configuration
 app.globals = {
     canvasId: 'main',
-    preloaderId: 'preloader'
+    defaultFont: 'Open Sans'
 };
 
 // util functions
 app.Util = require('./Util.js');
 // loading & init functions
 app.Load = require('./Load.js');
+// view engine - display & hide
+app.ViewEngine = require('./Views.js');
 
 // classes
 app.MainMenu = require('./MainMenu.js');

@@ -1,43 +1,43 @@
 // gulp
-var gulp = require('gulp'),
-	rename = require('gulp-rename'),
-	concat = require('gulp-concat'),
-	sourcemaps = require('gulp-sourcemaps'),
-	browserify = require('gulp-browserify'),
+var gulp = require('gulp');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
+var browserify = require('gulp-browserify');
 
 //img
-	imagemin = require('gulp-imagemin'),
+var imagemin = require('gulp-imagemin');
 
 // html
-	htmlmin = require('gulp-htmlmin'),
+var htmlmin = require('gulp-htmlmin');
 
 // css
-	less = require('gulp-less'),
-	cssmin = require('gulp-minify-css'),
+var less = require('gulp-less');
+var cssmin = require('gulp-minify-css');
 
 // js
-	hint = require('gulp-jshint'),
-	jsmin = require('gulp-uglify'),
+var	hint = require('gulp-jshint');
+var	jsmin = require('gulp-uglify');
 
 // paths
-	bases = {
-		app: 'src/',
-		build: 'build/'
-	},
+var bases = {
+    app: 'src/',
+    build: 'build/'
+};
 
-	paths = {
-		html: '*.html',
-		js: 'js/*.js',
-		lib: 'js/lib/*',
-		less: 'less/*.less',
-		images: 'images/'
-	};
+var paths = {
+    html: '*.html',
+    js: 'js/*.js',
+    lib: 'js/lib/*',
+    less: 'less/*.less',
+    images: 'images/'
+};
 
 gulp.task('browserify', function() {
    gulp.src(bases.app + 'js/app.js')
-       .pipe(browserify({
-
-       }))
+       .pipe(browserify({}))
+       .pipe(jsmin())
+       .pipe(rename('app.min.js'))
        .pipe(gulp.dest(bases.build + 'js'));
 });
 
@@ -58,20 +58,9 @@ gulp.task('less', function() {
 
 gulp.task('lint', function() {
 	return gulp.src(paths.js, {cwd: bases.app})
-		.pipe(hint())
-		.pipe(hint.reporter('default'));
-});
-
-gulp.task('scripts', function() {
-	return gulp.src(paths.js, {cwd: bases.app})
-		.pipe(sourcemaps.init())
-			.pipe(hint())
-			.pipe(hint.reporter('default'))
-		.pipe(concat('app.js'))
-		.pipe(gulp.dest(bases.build + 'js'))
-		.pipe(rename('app.min.js'))
-		.pipe(jsmin())
-		.pipe(gulp.dest(bases.build + 'js'));
+        .pipe(sourcemaps.init())
+            .pipe(hint())
+            .pipe(hint.reporter('default'));
 });
 
 gulp.task('copy', function() {
@@ -86,9 +75,9 @@ gulp.task('imagemin', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(bases.app + paths.html, ['html']);
-	gulp.watch(bases.app + paths.less, ['css']);
-	gulp.watch(bases.app + paths.js, ['scripts', 'copy']);
+	gulp.watch(bases.app + paths.html, ['htmlmin']);
+	gulp.watch(bases.app + paths.less, ['less']);
+	gulp.watch(bases.app + paths.js, ['lint', 'browserify', 'copy']);
 });
 
-gulp.task('default', ['lint', 'scripts', 'copy', 'html', 'css', 'watch']);
+gulp.task('default', ['lint', 'browserify', 'copy', 'htmlmin', 'less', 'imagemin', 'watch']);

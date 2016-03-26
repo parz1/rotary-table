@@ -17,6 +17,9 @@ module.exports = {
         // attaching resize to window resize event
         window.onresize = app.Util.resize;
 
+        // stage and ticker
+        this.create();
+
         // preload
         this.preload();
 
@@ -34,13 +37,14 @@ module.exports = {
             {src:'https://pbs.twimg.com/media/Cd6n5DsUsAAae73.jpg', id:'first'}
         ];
 
+        this.preloadText = app.Util.createText('Loading');
+        app.stage.addChild(this.preloadText);
+
         this.loader = new createjs.LoadQueue(false);
         this.loader.on('fileload', this.handleFileLoad, null, false, this);
         this.loader.on('progress', this.handleFileProgress, null, false, this);
         this.loader.on('complete', this.handleComplete, null, false, this);
         this.loader.loadManifest(manifest);
-
-        console.log('preloading application');
 
     },
 
@@ -58,18 +62,17 @@ module.exports = {
         // this function is changing load progress
         var percent = Math.round(that.loader.progress * 100);
 
-        app.preloader.innerHTML = 'Loading ' + percent + '%';
+        that.preloadText.text = 'Loading ' + percent + '%';
 
     },
 
     handleComplete: function(e, that) {
 
-        // and here are functions that are called when loading ends
-        document.getElementById(app.globals.preloaderId).style.display = 'none';
-
-        that.create();
+        app.stage.removeChild(that.preloadText);
 
         app.Util.resize();
+
+        that.start();
 
     },
 
@@ -81,16 +84,19 @@ module.exports = {
 
     create: function() {
 
+        // creating our stage - context
         app.stage = new createjs.Stage(app.canvas);
 
+        // fps and updating after each tick
         createjs.Ticker.setFPS(25);
         createjs.Ticker.on('tick', this.tickFn);
 
-        // name of instance lowercase, name of object with capital letters
-        app.mainmenu = new app.MainMenu();
+    },
+
+    start: function() {
 
         // initing first view
-        app.mainmenu.init();
+        app.ViewEngine.displayMainMenu();
 
     }
 

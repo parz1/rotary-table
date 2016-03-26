@@ -24,13 +24,7 @@ MainMenu.prototype = {
 
     view: function() {
 
-        var tempShape;
-
         this.ctr = new createjs.Container();
-
-        tempShape = new createjs.Shape( new createjs.Graphics().ss(1).s('#fff').dr(0, 0, 300, 50) );
-
-        this.ctr.addChild(tempShape);
 
         this.isInited = true;
 

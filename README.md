@@ -1,6 +1,6 @@
-# CreateJS & Webpack Starter
+# CreateJS application starter
 
-CreateJS & Webpack starter for HTML5 Games/Applications. *Description/instruction incoming.*
+CreateJS application starter built with webpack. *Description/instruction incoming.*
 
 To do:
 ------

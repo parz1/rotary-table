@@ -40,8 +40,5 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
-    "createjs-collection": "^0.8.2-1"
   }
 }

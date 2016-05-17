@@ -10,8 +10,7 @@ module.exports = {
 	context: path.resolve('source'),
 
 	entry: {
-		app: './app/index.js',
-		vendor: ['createjs-collection']
+		app: './app/index.js'
 	},
 
 	output: {
@@ -21,7 +20,6 @@ module.exports = {
 	},
 
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.js'),
 		cssExtractor,
 		htmlExtractor
 	],
@@ -61,7 +59,8 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpg)$/,
-				loader: 'url-loader?limit=10000'
+				exclude: /node_modules/,
+				loader: 'file-loader'
 			},
 			{
 				test: /\.(woff2|woff)$/,

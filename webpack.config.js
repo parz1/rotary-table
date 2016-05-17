@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const cssExtractor = new ExtractTextPlugin('styles.css');
@@ -8,9 +9,10 @@ module.exports = {
 
 	context: path.resolve('source'),
 
-	entry: [
-		'./app/index.js'
-	],
+	entry: {
+		app: './app/index.js',
+		vendor: ['createjs-collection']
+	},
 
 	output: {
 		path: path.resolve('dist'),
@@ -19,6 +21,7 @@ module.exports = {
 	},
 
 	plugins: [
+		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.js'),
 		cssExtractor,
 		htmlExtractor
 	],

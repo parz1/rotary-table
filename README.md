@@ -5,5 +5,6 @@ CreateJS application starter built with webpack. *Description/instruction incomi
 To do:
 ------
 + local createjs framework
-+ preloader
++ ~~game class~~
++ ~~preloader class~~
 + main menu module

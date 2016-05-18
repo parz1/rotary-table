@@ -1,4 +1,5 @@
 import config from '../config.js';
+import utils from '../utils.js';
 
 import Game from './Game.js';
 
@@ -14,12 +15,24 @@ export default class Preload {
 	 * Sets up game loader.
 	 */
 	static init() {
+		this.createTextLoader();
+
 		this.loader = new createjs.LoadQueue(false);
 		this.loader.on('error', this.handleFileError, this);
 		this.loader.on('fileload', this.handleFileLoad, this);
-		this.loader.on('progress', this.handleProgress, this);
+		this.loader.on('progress', this.handleProgress.bind(this), this);
 		this.loader.on('complete', this.handleComplete, this, true);
 		this.loader.loadManifest(config.manifest);    
+	}
+
+	/*
+	 * Create graphic loader for manifest.
+	 */
+	static createTextLoader() {
+		this.graphicLoader = utils.drawTextShape(0, 0, 1920, 1080, '#000', 'Loading', '#eee');
+		
+		this.textLoader = this.graphicLoader.getChildByName('mainText');
+		Game.STAGE.addChild(this.graphicLoader);
 	}
 
 	/**
@@ -47,7 +60,8 @@ export default class Preload {
 	static handleProgress() {
 	    let percent = Math.round(this.loader.progress * 100);
 
-	    console.log('Loading ' + percent + '%');
+	    console.log(`Loading ${percent} %`);
+	    this.textLoader.text = `Loading ${percent} %`;
 	}
 
 	/**
@@ -55,8 +69,7 @@ export default class Preload {
 	 * @augments Game
 	 */
 	static handleComplete() {
-		let game = new Game();
-		game.init();
+
 	}
 
 }

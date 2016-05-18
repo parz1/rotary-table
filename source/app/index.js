@@ -1,6 +1,6 @@
 import '../styles/app.scss';
 import '../index.html';
 
-import Preload from './class/Preload.js';
+import Game from './class/Game.js';
 
-window.onload = Preload.init();
+window.onload = new Game();

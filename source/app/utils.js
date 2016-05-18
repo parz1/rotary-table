@@ -1,7 +1,10 @@
-import con from './const.js';
+/**
+ * Utility functions.
+ * @module utility
+ */
+let utils = module.exports = {};
 
-var exports = module.exports = {};
-
-exports.scaleXY = function(elem, amount) {
+/** Scale element equally. */
+utils.scaleXY = function(elem, amount) {
 	elem.scaleX = elem.scaleY = amount;
 };

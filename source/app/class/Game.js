@@ -10,6 +10,7 @@ export default class Game {
 	 * Create init promise.
 	 */
 	constructor() {
+		console.log(utils);
 		let initProm = new Promise((resolve, reject) => {
 			this.init();
 			resolve();

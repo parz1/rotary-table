@@ -1,10 +1,18 @@
 /**
  * Utility functions.
- * @module utility
+ * @module Utility
+ */
+
+/**
+ * @alias module:Utility
  */
 let utils = module.exports = {};
 
-/** Scale element equally. */
+/** 
+ * Scale element equally.
+ * @param {object} elem Element to scale
+ * @param {number} amount Scale ratio
+ */
 utils.scaleXY = function(elem, amount) {
 	elem.scaleX = elem.scaleY = amount;
 };

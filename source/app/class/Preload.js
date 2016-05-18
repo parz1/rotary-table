@@ -37,7 +37,7 @@ export default class Preload {
 
 	/**
 	 * Handle errors from loader.
-	 * @param {object} Error event.
+	 * @param {object} Event Error event.
 	 */
 	static handleFileError(e) {
 		console.warn('Error: ' + e.title);
@@ -46,7 +46,7 @@ export default class Preload {
 
 	/**
 	 * Pushing loaded object to Game.IMAGES if file is image.
-	 * @param {object} Loaded item event.
+	 * @param {object} Event Loaded item event.
 	 */
 	static handleFileLoad(e) {
 		if (e.item.type === 'image') {
@@ -65,11 +65,8 @@ export default class Preload {
 	}
 
 	/**
-	 * Initing game when loading is completed.
-	 * @augments Game
+	 *
 	 */
-	static handleComplete() {
-
-	}
+	static handleComplete() {}
 
 }

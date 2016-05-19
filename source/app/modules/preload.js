@@ -1,3 +1,5 @@
+let _Promise = require('babel-runtime/core-js/promise')['default'];
+
 import config from '../config.js';
 import utils from './utils.js';
 
@@ -20,18 +22,24 @@ preload.init = function(game) {
 
 	this.createTextLoader();
 
-	this.loader = new createjs.LoadQueue(false);
-	this.loader.on('error', this.handleFileError, this);
-	this.loader.on('fileload', this.handleFileLoad, this);
-	this.loader.on('progress', this.handleProgress.bind(this), this);
-	this.loader.loadManifest(config.manifest); 
+	return new _Promise((resolve, reject) => {
+		this.loader = new createjs.LoadQueue(false);
+		this.loader.on('error', this.handleFileError, this);
+		this.loader.on('fileload', this.handleFileLoad, this);
+		this.loader.on('progress', this.handleProgress.bind(this), this);
+		this.loader.on('complete', this.handleComplete.bind(this, () => {
+			resolve();
+		}));
+		this.loader.loadManifest(config.manifest);
+	});
+
 };
 
 /**
  * Create graphic loader for manifest.
  */
 preload.createTextLoader = function() {
-	this.graphicLoader = utils.drawTextShape(0, 0, config.canvas.width, config.canvas.height, '#000', 'Loading', '#eee');
+	this.graphicLoader = utils.drawTextShape(0, 0, config.canvas.width, config.canvas.height, '#fff', 'Loading', '#9b59b6');
 		
 	this.textLoader = this.graphicLoader.getChildByName('mainText');
 	this.game.STAGE.addChild(this.graphicLoader);
@@ -64,4 +72,8 @@ preload.handleProgress = function() {
 
 	console.log(`Loading ${percent} %`);
 	this.textLoader.text = `Loading ${percent} %`;
+};
+
+preload.handleComplete = function(cb, e) {
+	cb();
 };

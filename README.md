@@ -7,4 +7,5 @@ To do:
 + local createjs framework
 + ~~game class~~
 + ~~preloader class~~
-+ main menu module
++ preload concept
++ main menu class

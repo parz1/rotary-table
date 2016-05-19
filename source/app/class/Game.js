@@ -1,3 +1,5 @@
+let _Promise = require('babel-runtime/core-js/promise')['default'];
+
 import config from '../config.js';
 
 import utils from '../modules/utils.js';
@@ -7,10 +9,19 @@ import preload from '../modules/preload.js';
 export default class Game {
 
 	/**
-	 * Inits the world.
+	 * Init the world, create main loader promise.
 	 */
 	constructor() {
-		this.init();
+		this.initProm = new _Promise((resolve, reject) => {
+			console.log('game init');
+			this.init();
+			resolve();
+		}).then(() => {
+			console.log('preload');
+			return preload.init(Game);
+		}).then(() => {
+			console.log('done');
+		});
 	}
 
 	/**
@@ -26,8 +37,6 @@ export default class Game {
 		
 		this.resize();
 		window.onresize = this.resize.bind(this);
-
-		preload.init(Game);
 	}
 
 	/**
@@ -41,22 +50,17 @@ export default class Game {
 	 * Resize canvas and stage depends on window dimensions.
 	 */
 	resize() {
-
-		if (!this.canvas) {
-			return;
-		}
-
 		let w = window.innerWidth,
 			h = window.innerHeight,
 			ow = config.canvas.width,
 			oh = config.canvas.height,
 			scale = Math.min(w / ow, h /oh);
 
-		this.canvas.width = ow * scale;
-		this.canvas.height = oh * scale;	
+		if (!this.canvas) {
+			return;
+		}
 
-		this.canvas.style.width = ow * scale + 'px';
-		this.canvas.style.height = oh * scale + 'px';		
+		utils.setWH(this.canvas, ow * scale, oh * scale, true);		
 
 		if (!this.stage) {
 			return;

@@ -8,10 +8,27 @@
  */
 let utils = module.exports = {};
 
+/**
+ * Set height and width of DOM element
+ * @param {object} Element DOM Element
+ * @param {number} Width Width
+ * @param {number} Height Height
+ * @param {boolean} CSS If true sets css styles
+ */
+utils.setWH = function(elem, w, h, css = false) {
+	elem.width = w;
+	elem.height = h;
+
+	if (css) {
+		elem.style.width = `${w}px`;
+		elem.style.height = `${h}px`;
+	}
+};
+
 /** 
  * Scale element equally.
  * @param {object} Element Element to change
- * @param {number} amount Scale ratio
+ * @param {number} Amount Scale ratio
  */
 utils.scaleXY = function(elem, amount) {
 	elem.scaleX = elem.scaleY = amount;
@@ -40,7 +57,7 @@ utils.centerObjectVertical = function(elem, parent) {
 
 	elem.y = parentDims.height / 2;
 
-	utils.centerReg(elem, false, true);
+	this.centerReg(elem, false, true);
 };
 
 /** 
@@ -53,7 +70,7 @@ utils.centerObjectHorizontal = function(elem, parent) {
 
 	elem.x = parentDims.width / 2;
 
-	utils.centerReg(elem, true, false);
+	this.centerReg(elem, true, false);
 };
 
 /** 
@@ -62,8 +79,8 @@ utils.centerObjectHorizontal = function(elem, parent) {
  * @param {object} Parent Parent of element
  */
 utils.centerObject = function(elem, parent) {
-	utils.centerObjectVertical(elem, parent);
-	utils.centerObjectHorizontal(elem, parent);
+	this.centerObjectVertical(elem, parent);
+	this.centerObjectHorizontal(elem, parent);
 };
 
 /** 
@@ -124,14 +141,16 @@ utils.drawText = function(content = '', font = '30px Arial', color = '#fff') {
  * @returns {object} CreateJS container object
  */
 utils.drawTextShape = function(x, y, w, h, bgColor, content, color, font) {
-	let ctr = utils.drawCtr(x, y),
-		shp = utils.drawShp(0, 0, w, h, bgColor),
-		text = utils.drawText(content, font, color);
+	let ctr = this.drawCtr(x, y),
+		shp = this.drawShp(0, 0, w, h, bgColor),
+		text = this.drawText(content, font, color);
 
 	ctr.addChild(shp, text);
 
-	utils.centerObject(text, ctr);
+	this.centerObject(text, ctr);
 
+	text.textAlign = 'center';
+	text.textBaseline = 'middle';
 	text.name = 'mainText';
 
 	return ctr;

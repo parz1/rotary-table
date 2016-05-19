@@ -10,14 +10,19 @@ let utils = module.exports = {};
 
 /** 
  * Scale element equally.
- * @param {object} elem Element to scale
+ * @param {object} Element Element to change
  * @param {number} amount Scale ratio
  */
 utils.scaleXY = function(elem, amount) {
 	elem.scaleX = elem.scaleY = amount;
 };
 
-/** Center reg point. */
+/** 
+ * Center registration point. 
+ * @param {object} Element Element to change
+ * @param {boolean} X If true centers registration point horizontally
+ * @param {boolean} Y If true centers registration point vertically
+ */
 utils.centerReg = function(elem, x = false, y = false) {
 	let dims = elem.getBounds();
 
@@ -27,7 +32,11 @@ utils.centerReg = function(elem, x = false, y = false) {
 	return elem;
 };
 
-/** Centers object vertically. */
+/** 
+ * Center object vertically based on it's parent height.
+ * @param {object} Element Element to change
+ * @param {object} Parent Parent of element
+ */
 utils.centerObjectVertical = function(elem, parent) {
 	let parentDims = parent.getBounds();
 
@@ -38,7 +47,11 @@ utils.centerObjectVertical = function(elem, parent) {
 	return elem;
 };
 
-/** Centers object horizontally. */
+/** 
+ * Center object horizontally based on it's parent width. 
+ * @param {object} Element Element to change
+ * @param {object} Parent Parent of element
+ */
 utils.centerObjectHorizontal = function(elem, parent) {
 	let parentDims = parent.getBounds();
 
@@ -49,7 +62,11 @@ utils.centerObjectHorizontal = function(elem, parent) {
 	return elem;
 };
 
-/** Centers object vertically and horizontally. */
+/** 
+ * Center object vertically and horizontally based on it's parent height and width. 
+ * @param {object} Element Element to change
+ * @param {object} Parent Parent of element
+ */
 utils.centerObject = function(elem, parent) {
 	utils.centerObjectVertical(elem, parent);
 	utils.centerObjectHorizontal(elem, parent);
@@ -57,7 +74,11 @@ utils.centerObject = function(elem, parent) {
 	return elem;
 };
 
-/** Draws container and set it's position. */
+/** 
+ * Draws container and set it's position. 
+ * @param {number} X Horizontal container position
+ * @param {number} Y Vertical container position
+ */
 utils.drawCtr = function(x = 0, y = 0) {
 	let ctr = new createjs.Container();
 
@@ -67,7 +88,14 @@ utils.drawCtr = function(x = 0, y = 0) {
 	return ctr;
 };
 
-/** Draws shape and set it's bounds. */
+/** 
+ * Draws shape and set it's bounds. 
+ * @param {number} X Horizontal shape position
+ * @param {number} Y Vertical shape position
+ * @param {number} Width Width of shape
+ * @param {number} Height Height of shape
+ * @param {string} Background color Background color of shape
+ */
 utils.drawShp = function(x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
 	let shp = new createjs.Shape( new createjs.Graphics().f(bgColor).dr(x, y, w, h) );
 
@@ -76,15 +104,30 @@ utils.drawShp = function(x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
 	return shp;
 };
 
-/** Draw text object. */
+/** 
+ * Draw text object. 
+ * @param {string} Content Content of text object
+ * @param {string} Font Font specification in format '[size] [type]', e.g '30px Arial'
+ * @param {string} Color Color of text object
+ */
 utils.drawText = function(content = '', font = '30px Arial', color = '#fff') {
 	let text = new createjs.Text(content, font, color);
 
 	return text;
 };
 
-/** Draws container with background and text centered vertically&horizontally. */
-utils.drawTextShape = function(x, y, w, h, bgColor = '#000', content = '', color = '#fff', font = '30px Arial') {
+/** 
+ * Draws container with background and text centered vertically&horizontally. 
+ * @param {number} X Horizontal container position
+ * @param {number} Y Vertical container position
+ * @param {number} Width Width of container
+ * @param {number} Height Height of container
+ * @param {string} Background color Background color of container
+ * @param {string} Content Content of text object in container
+ * @param {string} Color Color of text object in container
+ * @param {string} Font Font specification in format '[size] [type]', e.g '30px Arial'
+ */
+utils.drawTextShape = function(x, y, w, h, bgColor, content, color, font) {
 	let ctr = utils.drawCtr(x, y),
 		shp = utils.drawShp(0, 0, w, h, bgColor),
 		text = utils.drawText(content, font, color);

@@ -1,22 +1,16 @@
 import config from '../config.js';
-import utils from '../utils.js';
 
-import Preload from './Preload.js';
+import utils from '../modules/utils.js';
+import preload from '../modules/preload.js';
 
 /** Main class representing game world. */
 export default class Game {
 
 	/**
-	 * Create init promise.
+	 * Inits the world.
 	 */
 	constructor() {
-		console.log(utils);
-		let initProm = new Promise((resolve, reject) => {
-			this.init();
-			resolve();
-		});
-
-		initProm.then(() => Preload.init());
+		this.init();
 	}
 
 	/**
@@ -32,6 +26,8 @@ export default class Game {
 		
 		this.resize();
 		window.onresize = this.resize.bind(this);
+
+		preload.init(Game);
 	}
 
 	/**

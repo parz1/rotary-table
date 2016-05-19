@@ -9,6 +9,11 @@
 let utils = module.exports = {};
 
 /**
+ * Bluebird promise
+ */
+utils._Promise = require('babel-runtime/core-js/promise')['default'];
+
+/**
  * Set height and width of DOM element
  * @param {object} Element DOM Element
  * @param {number} Width Width

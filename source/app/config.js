@@ -14,6 +14,8 @@
 let config = module.exports = {
 	manifest: [
 		// example jpg
+		// random images from imgur 
+		// temporary
 		{src:'https://pbs.twimg.com/media/Chypg9aUUAAP55z.jpg', id:'example'},
 		{src:'http://i.imgur.com/YJMkGJd.jpg', id:'example2'},
 		{src:'http://i.imgur.com/1o2G8Jr.png', id:'asadsad'},

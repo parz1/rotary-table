@@ -1,5 +1,3 @@
-let _Promise = require('babel-runtime/core-js/promise')['default'];
-
 import config from '../config.js';
 import utils from './utils.js';
 
@@ -16,23 +14,21 @@ let preload = module.exports = {};
 /**
  * Sets up game loader.
  * @param {object} Game Main game class
+ * @returns {object} Promise Return loader promise resolved when loading is complete
  */
 preload.init = function(game) {
 	this.game = game;
 
 	this.createTextLoader();
 
-	return new _Promise((resolve, reject) => {
+	return new utils._Promise((resolve, reject) => {
 		this.loader = new createjs.LoadQueue(false);
 		this.loader.on('error', this.handleFileError, this);
 		this.loader.on('fileload', this.handleFileLoad, this);
 		this.loader.on('progress', this.handleProgress.bind(this), this);
-		this.loader.on('complete', this.handleComplete.bind(this, () => {
-			resolve();
-		}));
+		this.loader.on('complete', this.handleComplete.bind(this, () => resolve()));
 		this.loader.loadManifest(config.manifest);
 	});
-
 };
 
 /**
@@ -74,6 +70,9 @@ preload.handleProgress = function() {
 	this.textLoader.text = `Loading ${percent} %`;
 };
 
-preload.handleComplete = function(cb, e) {
+/**
+ * Executing callback when loading is complete.
+ */
+preload.handleComplete = function(cb) {
 	cb();
 };

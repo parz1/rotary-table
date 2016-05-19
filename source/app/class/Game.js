@@ -1,5 +1,3 @@
-let _Promise = require('babel-runtime/core-js/promise')['default'];
-
 import config from '../config.js';
 
 import utils from '../modules/utils.js';
@@ -12,7 +10,7 @@ export default class Game {
 	 * Init the world, create main loader promise.
 	 */
 	constructor() {
-		this.initProm = new _Promise((resolve, reject) => {
+		this.initProm = new utils._Promise((resolve, reject) => {
 			console.log('game init');
 			this.init();
 			resolve();

@@ -1,7 +1,6 @@
 import config from '../config.js';
-
 import utils from '../modules/utils.js';
-import preload from '../modules/preload.js';
+import Preload from './Preload.js';
 
 /** Main class representing game world. */
 export default class Game {
@@ -12,11 +11,10 @@ export default class Game {
 	constructor() {
 		this.initProm = new utils._Promise((resolve, reject) => {
 			console.log('game init');
-			this.init();
-			resolve();
+			this.init(resolve);
 		}).then(() => {
 			console.log('preload');
-			return preload.init(Game);
+			return new Preload();
 		}).then(() => {
 			console.log('done');
 		});
@@ -26,7 +24,7 @@ export default class Game {
 	 * Create canvas, stage and resize application.
 	 * @augments createjs
 	 */
-	init() {
+	init(resolve) {
 		this.canvas = Game.CANVAS = document.getElementById(config.canvas.id);
 		this.stage = Game.STAGE = new createjs.Stage(this.canvas);
 
@@ -35,6 +33,8 @@ export default class Game {
 		
 		this.resize();
 		window.onresize = this.resize.bind(this);
+
+		resolve();
 	}
 
 	/**

@@ -43,12 +43,12 @@ export default class Preload {
 	}
 
 	/**
-	 * Erase graphic loader after loading is complete.
+	 * Erase graphic loader.
 	 */
-	 eraseTextLoader() {
-	 	Game.STAGE.removeChild(this.graphicLoader);
-	 	this.graphicLoader = null;
-	 }
+	eraseTextLoader() {
+		Game.STAGE.removeChild(this.graphicLoader);
+		this.graphicLoader = null;
+	}
 
 	/**
 	 * Handle errors from loader.
@@ -80,12 +80,15 @@ export default class Preload {
 	}
 
 	/**
-	 * Executing callback when loading is complete.
-	 * @param {object} Callback Callback
+	 * Fires when loading is complete.
+	 * Slides up graphic loader and executes callback.
+	 * @param {object} Callback Callback - resolve loader promise
 	 */
 	handleComplete(cb) {
-		this.eraseTextLoader();
-		cb();
+		createjs.Tween.get(this.graphicLoader)
+			.to({y: -config.canvas.height}, 1000, createjs.Ease.cubicInOut)
+			.call(this.eraseTextLoader)
+			.call(cb);
 	}
 
 }

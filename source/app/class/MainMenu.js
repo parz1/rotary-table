@@ -9,7 +9,7 @@ export default class MainMenu {
 	 * Calling init function
 	 */
 	constructor() {
-		console.log('main menu constructed');
+		console.log('MainMenu constructed');
 		this.init();
 	}
 

@@ -88,10 +88,24 @@ utils.centerObject = function(elem, parent) {
 	this.centerObjectHorizontal(elem, parent);
 };
 
+/**
+ * Center object vertically and horizontally based on parameters.
+ * @param {object} Element Element to change
+ * @param {number} Width Width needed to center
+ * @param {number} Height Height needed to center
+ */
+utils.centerObjectByDims = function(elem, w, h) {
+	elem.x = w / 2;
+	elem.y = h / 2;
+
+	this.centerReg(elem, true, true);
+};
+
 /** 
  * Draws container and set it's position. 
  * @param {number} X Horizontal container position
  * @param {number} Y Vertical container position
+ * @augments createjs
  * @returns {object} CreateJS container object
  */
 utils.drawCtr = function(x = 0, y = 0) {
@@ -110,6 +124,7 @@ utils.drawCtr = function(x = 0, y = 0) {
  * @param {number} Width Width of shape
  * @param {number} Height Height of shape
  * @param {string} BackgroundColor Background color of shape
+ * @augments createjs
  * @returns {object} CreateJS shape object
  */
 utils.drawShp = function(x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
@@ -125,6 +140,7 @@ utils.drawShp = function(x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
  * @param {string} Content Content of text object
  * @param {string} Font Font specification in format '[size] [type]', e.g '30px Arial'
  * @param {string} Color Color of text object
+ * @augments createjs
  * @returns {object} CreateJS text object
  */
 utils.drawText = function(content = '', font = '30px Arial', color = '#fff') {

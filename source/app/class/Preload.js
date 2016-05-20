@@ -18,7 +18,7 @@ export default class Preload {
 	}
 
 	/**
-	 * Sets up game loader.
+	 * Sets up game loader. Resolve promise when loading is complete.
 	 * @param {object} Resolve Promise resolve
 	 */
 	init(resolve) {
@@ -41,6 +41,14 @@ export default class Preload {
 		this.textLoader = this.graphicLoader.getChildByName('mainText');
 		Game.STAGE.addChild(this.graphicLoader);
 	}
+
+	/**
+	 * Erase graphic loader after loading is complete.
+	 */
+	 eraseTextLoader() {
+	 	Game.STAGE.removeChild(this.graphicLoader);
+	 	this.graphicLoader = null;
+	 }
 
 	/**
 	 * Handle errors from loader.
@@ -73,8 +81,10 @@ export default class Preload {
 
 	/**
 	 * Executing callback when loading is complete.
+	 * @param {object} Callback Callback
 	 */
 	handleComplete(cb) {
+		this.eraseTextLoader();
 		cb();
 	}
 

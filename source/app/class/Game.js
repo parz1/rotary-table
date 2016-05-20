@@ -1,6 +1,7 @@
 import config from '../config.js';
 import utils from '../modules/utils.js';
 import Preload from './Preload.js';
+import MainMenu from './MainMenu.js';
 
 /** Main class representing game world. */
 export default class Game {
@@ -9,14 +10,12 @@ export default class Game {
 	 * Init the world, create main loader promise.
 	 */
 	constructor() {
-		this.initProm = new utils._Promise((resolve, reject) => {
-			console.log('game init');
+		let initProm = new utils._Promise((resolve, reject) => {
 			this.init(resolve);
 		}).then(() => {
-			console.log('preload');
 			return new Preload();
 		}).then(() => {
-			console.log('done');
+			new MainMenu();
 		});
 	}
 
@@ -48,15 +47,15 @@ export default class Game {
 	 * Resize canvas and stage depends on window dimensions.
 	 */
 	resize() {
+		if (!this.canvas) {
+			return;
+		}
+		
 		let w = window.innerWidth,
 			h = window.innerHeight,
 			ow = config.canvas.width,
 			oh = config.canvas.height,
 			scale = Math.min(w / ow, h /oh);
-
-		if (!this.canvas) {
-			return;
-		}
 
 		utils.setWH(this.canvas, ow * scale, oh * scale, true);		
 

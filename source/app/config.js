@@ -32,6 +32,6 @@ let config = module.exports = {
 		height: 1080
 	},
 	stage: {
-		fps: 5
+		fps: 40
 	}
 };

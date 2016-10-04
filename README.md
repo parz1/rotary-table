@@ -7,12 +7,13 @@ Requirements:
 + Bower
 + Webpack & Webpack-dev-server
 
+Installation:
+------
 To get started clone this repository and type:
 
 ``
 $ npm install
 ``
-
 ``
 $ bower install
 ``

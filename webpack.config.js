@@ -72,24 +72,10 @@ module.exports = {
 				test: /\.(ttf|eot|svg)$/,
 				loader: 'file-loader'
 			},
-			// Windows solution
-			// WTF is this?
             { 
-				test: /bower_components\/PreloadJS|SoundJS|EaselJS|TweenJS\/.*\.js$/, 
+				test: /bower_components(\/|\\)(PreloadJS|SoundJS|EaselJS|TweenJS)(\/|\\).*\.js$/, 
 				loader: 'imports?this=>window!exports?window.createjs' 
-			},
-            { 
-				test: /bower_components\/EaselJS|SoundJS|PreloadJS|TweenJS\/.*\.js$/, 
-				loader: 'imports?this=>window!exports?window.createjs' 
-			},
-            { 
-				test: /bower_components\/EaselJS|SoundJS|TweenJS|PreloadJS\/.*\.js$/, 
-				loader: 'imports?this=>window!exports?window.createjs' 
-			},
-            { 
-				test: /bower_components\/EaselJS|TweenJS|SoundJS|PreloadJS\/.*\.js$/, 
-				loader: 'imports?this=>window!exports?window.createjs' 
-			}											
+			}									
 		]
 	},
 

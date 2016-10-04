@@ -72,7 +72,6 @@ module.exports = {
 				test: /\.(ttf|eot|svg)$/,
 				loader: 'file-loader'
 			},
-            // That will tell Webpack that EaselJS refers to `window` with `this` and exports `window.createjs`.
             { 
 				test: /bower_components\/EaselJS|SoundJS|PreloadJS|TweenJS\/.*\.js$/, 
 				loader: 'imports?this=>window!exports?window.createjs' 

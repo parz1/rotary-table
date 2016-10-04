@@ -1,6 +1,6 @@
 # CreateJS application starter
 
-This starter allows you to write code in ES6, using babel to transpile. ~~Unfortunately, there is no official CreateJS npm package, so we have to wait for it.~~ Solved with Bower packages.
+This starter allows you to write HTML5 application in CreateJS/ES6, using with webpack. ~~Unfortunately, there is no official CreateJS npm package, so we have to wait for it.~~ Solved with Bower packages.
 Requirements:
 ------
 + Node & npm

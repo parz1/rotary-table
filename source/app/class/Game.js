@@ -12,13 +12,12 @@ export default class Game {
 	 * Init the world, create main loader promise.
 	 */
 	constructor() {
-		const initProm = new utils._Promise((resolve, reject) => {
-			this.init(resolve);
-		}).then(() => {
-			return new Preload();
-		}).then(() => {
-			new MainMenu();
-		});
+		const initProm = 
+			new utils._Promise((resolve, reject) => {
+				this.init(resolve);
+			})
+			.then(() => new Preload())
+			.then(() => new MainMenu());
 	}
 
 	/**

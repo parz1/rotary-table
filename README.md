@@ -7,8 +7,6 @@ To get started clone this repository and type:
 $ npm install
 ``
 
-then:
-
 ``
 $ bower install
 ``

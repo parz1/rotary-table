@@ -1,3 +1,5 @@
+import { Container, Shape, Graphics, Text } from 'EaselJS';
+
 /**
  * Utility functions.
  * @module Utility
@@ -109,7 +111,7 @@ utils.centerObjectByDims = function(elem, w, h) {
  * @returns {object} CreateJS container object
  */
 utils.drawCtr = function(x = 0, y = 0) {
-	let ctr = new createjs.Container();
+	let ctr = new Container();
 
 	ctr.x = x;
 	ctr.y = y;
@@ -128,7 +130,7 @@ utils.drawCtr = function(x = 0, y = 0) {
  * @returns {object} CreateJS shape object
  */
 utils.drawShp = function(x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
-	let shp = new createjs.Shape( new createjs.Graphics().f(bgColor).dr(x, y, w, h) );
+	let shp = new Shape( new Graphics().f(bgColor).dr(x, y, w, h) );
 
 	shp.setBounds(x, y, w, h);
 
@@ -144,7 +146,7 @@ utils.drawShp = function(x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
  * @returns {object} CreateJS text object
  */
 utils.drawText = function(content = '', font = '30px Arial', color = '#fff') {
-	let text = new createjs.Text(content, font, color);
+	let text = new Text(content, font, color);
 
 	return text;
 };

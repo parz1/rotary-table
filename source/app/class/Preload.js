@@ -1,3 +1,6 @@
+import { LoadQueue } from 'PreloadJS';
+import { Tween, Ease } from 'TweenJS';
+
 import config from '../config.js';
 import utils from '../modules/utils.js';
 import Game from './Game.js';
@@ -24,7 +27,7 @@ export default class Preload {
 	init(resolve) {
 		this.createTextLoader();
 
-		this.loader = new createjs.LoadQueue(false);
+		this.loader = new LoadQueue(false);
 		this.loader.on('error', this.handleFileError, this);
 		this.loader.on('fileload', this.handleFileLoad, this);
 		this.loader.on('progress', this.handleProgress.bind(this), this);
@@ -85,8 +88,8 @@ export default class Preload {
 	 * @param {object} Callback Callback - resolve loader promise
 	 */
 	handleComplete(cb) {
-		createjs.Tween.get(this.graphicLoader)
-			.to({y: -config.canvas.height}, 1000, createjs.Ease.cubicInOut)
+		Tween.get(this.graphicLoader)
+			.to({y: -config.canvas.height}, 1000, Ease.cubicInOut)
 			.call(this.eraseTextLoader)
 			.call(cb);
 	}

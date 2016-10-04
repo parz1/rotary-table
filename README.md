@@ -15,7 +15,7 @@ $ npm start
 
 To do:
 ------
-+ ~~local createjs framework~~ *waiting for official package*
++ ~~local createjs framework~~ *waiting for official package* - already done
 + ~~game class~~
 + ~~preloader class~~
 + ~~preload concept~~

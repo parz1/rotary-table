@@ -1,3 +1,5 @@
+import { Stage, Ticker } from 'EaselJS';
+
 import config from '../config.js';
 import utils from '../modules/utils.js';
 import Preload from './Preload.js';
@@ -10,7 +12,7 @@ export default class Game {
 	 * Init the world, create main loader promise.
 	 */
 	constructor() {
-		let initProm = new utils._Promise((resolve, reject) => {
+		const initProm = new utils._Promise((resolve, reject) => {
 			this.init(resolve);
 		}).then(() => {
 			return new Preload();
@@ -21,14 +23,14 @@ export default class Game {
 
 	/**
 	 * Create canvas, stage and resize application.
-	 * @augments createjs
+	 * @augments Stage
 	 */
 	init(resolve) {
 		this.canvas = Game.CANVAS = document.getElementById(config.canvas.id);
-		this.stage = Game.STAGE = new createjs.Stage(this.canvas);
+		this.stage = Game.STAGE = new Stage(this.canvas);
 
-		createjs.Ticker.setFPS(config.stage.fps);
-		createjs.Ticker.on('tick', this.ticker.bind(this));
+		Ticker.setFPS(config.stage.fps);
+		Ticker.on('tick', this.ticker.bind(this));
 		
 		this.resize();
 		window.onresize = this.resize.bind(this);

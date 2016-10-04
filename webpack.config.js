@@ -73,9 +73,9 @@ module.exports = {
 				loader: 'file-loader'
 			},
             { 
-				test: /bower_components\/EaselJS|SoundJS|PreloadJS|TweenJS\/.*\.js$/, 
+				test: /bower_components(\/|\\)(PreloadJS|SoundJS|EaselJS|TweenJS)(\/|\\).*\.js$/, 
 				loader: 'imports?this=>window!exports?window.createjs' 
-			}			
+			}									
 		]
 	},
 

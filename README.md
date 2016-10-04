@@ -7,7 +7,13 @@ To get started clone this repository and type:
 $ npm install
 ``
 
-and type npm start to start webpack-dev-server:
+then:
+
+``
+$ bower install
+``
+
+To start webpack-dev-server type:
 
 ``
 $ npm start
@@ -15,7 +21,7 @@ $ npm start
 
 To do:
 ------
-+ ~~local createjs framework~~ *waiting for official package* - already done
++ ~~local createjs framework~~
 + ~~game class~~
 + ~~preloader class~~
 + ~~preload concept~~

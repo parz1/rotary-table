@@ -171,6 +171,7 @@ utils.drawTextShape = function(x, y, w, h, bgColor, content, color, font) {
 	ctr.addChild(shp, text);
 
 	this.centerObject(text, ctr);
+	this.centerReg(text);
 
 	text.textAlign = 'center';
 	text.textBaseline = 'middle';

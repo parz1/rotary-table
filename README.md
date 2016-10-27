@@ -7,8 +7,7 @@ Requirements:
 + Bower
 + Webpack & Webpack-dev-server
 
-Installation:
-------
+## Installation:
 To get started clone this repository and type:
 
 ``
@@ -19,10 +18,17 @@ $ npm install
 $ bower install
 ``
 
+## Usage:
 To start webpack-dev-server type:
 
 ``
 $ npm start
+``
+
+To build package type:
+
+``
+$ npm run build
 ``
 
 To do:

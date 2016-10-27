@@ -6,7 +6,9 @@ This starter allows you to write HTML5 application in CreateJS/ES6, using with w
 
 1. Clone this repo using `git clone https://github.com/eskab/CreateJS-Starter.git`
 2. Run `npm install` and `bower install` to install dependencies
-3. Now you can run `npm start` and see example app at <http://localhost:8080>
+3. Now you can run
+  - `npm start` and see example app at <http://localhost:8080>
+  - `npm run build` to build package (dist)
 
 ## Requirements
 

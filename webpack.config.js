@@ -4,88 +4,86 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const cssExtractor = new ExtractTextPlugin('styles.css');
 const htmlExtractor = new ExtractTextPlugin('index.html');
-const bowerResolver = new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main']))	
+const bowerResolver = new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main']))
 
 module.exports = {
 
-	context: path.resolve('source'),
+  context: path.resolve('source'),
 
-	entry: {
-		app: './app/index.js'
-	},
+  entry: {
+    app: './app/index.js'
+  },
 
-	output: {
-		path: path.resolve('dist'),
-		publicPath: '/assets',
-		filename: 'app.js'
-	},
+  output: {
+    path: path.resolve('dist'),
+    publicPath: '/assets',
+    filename: 'app.js'
+  },
 
-	plugins: [
-		cssExtractor,
-		htmlExtractor,
-		bowerResolver
-	],
+  plugins: [
+    cssExtractor,
+    htmlExtractor,
+    bowerResolver
+  ],
 
-	devServer: {
-		contentBase: './source/'
-	},
+  devServer: {
+    contentBase: './source/'
+  },
 
-	module: {
-		preLoaders: [
+  module: {
+    preLoaders: [{
+      test: /\.js$/,
+      exclude: /node_modules|bower_components/,
+      loader: 'jshint-loader'
+    }],
+    loaders: [
 			{
-				test: /\.js$/,
-				exclude: /node_modules|bower_components/,
-				loader: 'jshint-loader'
-			}
-		],
-		loaders: [
-			{
-				test: /\.css$/,
-				exclude: /node_modules|bower_components/,
-				loader: cssExtractor.extract('style', 'css')
-			},
-			{
-				test: /\.scss$/,
-				exclude: /node_modules|bower_components/,
-				loader: cssExtractor.extract('style-loader', 'css-loader!sass-loader')
-			},
-			{
-				test: /\.html$/,
-				exclude: /node_modules|bower_components/,
-				loader: htmlExtractor.extract('html-loader!html-minify-loader')
-			},
-			{
-				test: /\.js$/,
-				exclude: /node_modules|bower_components/,
-				loader: 'babel-loader'
-			},
-			{
-				test: /\.(png|jpg)$/,
-				exclude: /node_modules|bower_components/,
-				loader: 'file-loader'
-			},
-			{
-				test: /\.(woff2|woff)$/,
-				loader: 'url-loader?limit=100000'
-			},
-			{
-				test: /\.(ttf|eot|svg)$/,
-				loader: 'file-loader'
-			},
-            { 
-				test: /bower_components(\/|\\)(PreloadJS|SoundJS|EaselJS|TweenJS)(\/|\\).*\.js$/, 
-				loader: 'imports?this=>window!exports?window.createjs' 
-			}									
-		]
-	},
+        test: /\.css$/,
+        exclude: /node_modules|bower_components/,
+        loader: cssExtractor.extract('style', 'css')
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules|bower_components/,
+        loader: cssExtractor.extract('style-loader', 'css-loader!sass-loader')
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules|bower_components/,
+        loader: htmlExtractor.extract('html-loader!html-minify-loader')
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules|bower_components/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        exclude: /node_modules|bower_components/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.(woff2|woff)$/,
+        loader: 'url-loader?limit=100000'
+      },
+      {
+        test: /\.(ttf|eot|svg)$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /bower_components(\/|\\)(PreloadJS|SoundJS|EaselJS|TweenJS)(\/|\\).*\.js$/,
+        loader: 'imports?this=>window!exports?window.createjs'
+      }
+    ]
+  },
 
-	resolve: {
-		extensions: ['', '.css', '.scss', '.html', '.js'],
-		modulesDirectories: ['node_modules', 'bower_components']
-	},
+  resolve: {
+    extensions: ['', '.css', '.scss', '.html', '.js'],
+    modulesDirectories: ['node_modules', 'bower_components']
+  },
 
-	jshint: {
-		esversion: 6
-	}
+  jshint: {
+    esversion: 6
+  }
 
 };

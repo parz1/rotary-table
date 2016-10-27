@@ -1,44 +1,27 @@
 # CreateJS application starter
 
-This starter allows you to write HTML5 application in CreateJS/ES6, using with webpack. ~~Unfortunately, there is no official CreateJS npm package, so we have to wait for it.~~ Solved with Bower packages.
+This starter allows you to write HTML5 application in CreateJS/ES6, using with webpack. CreateJS stuff (EaselJS, PreloadJS, SoundJS, TweenJS) come from bower packages, because there is no official package on npm.
+
+## Quick start
+
+1. Clone this repo using `git clone https://github.com/eskab/CreateJS-Starter.git`
+2. Run `npm install` and `bower install` to install dependencies
+3. Now you can run `npm start` and see example app at <http://localhost:8080>
 
 ## Requirements
 
-| Prerequisite    | How to install
-| --------------- | ------------- |
-| Node.js | [nodejs.org](http://nodejs.org/) |
-| Bower | `npm install -g bower` |
-| Webpack-dev-server | `npm install -g webpack-dev-server` |
+Prerequisite       | How to install
+------------------ | -----------------------------------
+Node.js            | [nodejs.org](http://nodejs.org/)
+Bower              | `npm install -g bower`
+Webpack-dev-server | `npm install -g webpack-dev-server`
 
-## Installation:
-To get started clone this repository and type:
+## Todo:
 
-``
-$ npm install
-``
-
-``
-$ bower install
-``
-
-## Usage:
-To start webpack-dev-server type:
-
-``
-$ npm start
-``
-
-To build package type:
-
-``
-$ npm run build
-``
-
-## To do:
-+ ~~local createjs framework~~
-+ ~~game class~~
-+ ~~preloader class~~
-+ ~~preload concept~~
-+ ~~main menu class~~
-+ description/instruction
-+ webpack production/development
+Task                               | Status
+---------------------------------- | ------
+Local CreateJS package             | ✔
+Starter classes                    | ✔
+Description/instruction            |
+Prod/dev environment               |
+Script for clean environment setup |

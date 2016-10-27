@@ -18,7 +18,7 @@ Node.js            | [nodejs.org](http://nodejs.org/)
 Bower              | `npm install -g bower`
 Webpack-dev-server | `npm install -g webpack-dev-server`
 
-## Todo:
+## Todo
 
 Task                               | Status
 ---------------------------------- | ------

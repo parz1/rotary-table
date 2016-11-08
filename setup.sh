@@ -24,11 +24,11 @@ echo "[$name] Complete"
 echo "$separator"
 echo "[$name] Initializing new repository"
 echo "$separator"
-git init && git add . && git commit -m "Initial commit"
+git init && git add -u && git commit -m "Initial commit"
 echo "[$name] Complete"
 
 # self deleting
 rm -rf "setup.sh"
 
 # reset setup.sh file
-git reset -- setup.sh
+git reset --hard

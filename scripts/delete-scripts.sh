@@ -3,8 +3,8 @@
 . config.sh
 
 echo "$separator"
-echo "[$name] Cleaning repository"
+echo "[$name] Deleting scripts folder"
 echo "$separator"
 cd ../
-rm -rf ".git"
+rm -rf "scripts"
 echo "[$name] Complete"

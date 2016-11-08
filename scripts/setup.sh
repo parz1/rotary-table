@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-./clean-repo.sh
+./delete-repo.sh
 ./install-deps.sh
 ./create-new-repo.sh
+./delete-scripts.sh

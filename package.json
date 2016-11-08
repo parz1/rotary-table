@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline",
     "build": "webpack",
-    "presetup": "npm i shelljs",
-    "setup": "node setup.js"
+    "setup": "cd scripts && sh ./index.sh"
   },
   "repository": {
     "type": "git",

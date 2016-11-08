@@ -31,11 +31,13 @@ module.exports = {
   },
 
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      exclude: /node_modules|bower_components/,
-      loader: 'jshint-loader'
-    }],
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: "eslint-loader",
+        exclude: /node_modules|bower_components/,
+      },
+    ],
     loaders: [
 			{
         test: /\.css$/,
@@ -82,8 +84,8 @@ module.exports = {
     modulesDirectories: ['node_modules', 'bower_components']
   },
 
-  jshint: {
-    esversion: 6
+  eslint: {
+    configFile: '.eslintrc'
   }
 
 };

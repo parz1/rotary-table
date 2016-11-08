@@ -2,9 +2,9 @@
 
 . config.sh
 
-echo "-----------------------------------------------------------"
+echo "$separator"
 echo "[$name] Initializing new repository"
-echo "-----------------------------------------------------------"
+echo "$separator"
 cd ../
 git init && git add -A && git commit -m "Initial commit"
 echo "[$name] Complete"

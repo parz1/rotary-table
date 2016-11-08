@@ -2,9 +2,9 @@
 
 . config.sh
 
-echo "-----------------------------------------------------------"
+echo "$separator"
 echo "[$name] Installing dependencies"
-echo "-----------------------------------------------------------"
+echo "$separator"
 cd ../
 npm install
 echo "[$name] NPM dependencies installed"

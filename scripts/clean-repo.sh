@@ -2,9 +2,9 @@
 
 . config.sh
 
-echo "-----------------------------------------------------------"
+echo "$separator"
 echo "[$name] Cleaning repository"
-echo "-----------------------------------------------------------"
+echo "$separator"
 cd ../
 rm -rf ".git"
 echo "[$name] Complete"

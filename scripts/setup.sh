@@ -2,5 +2,5 @@
 
 ./delete-repo.sh
 ./install-deps.sh
-./create-new-repo.sh
 ./delete-scripts.sh
+./create-new-repo.sh

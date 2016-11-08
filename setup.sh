@@ -29,3 +29,6 @@ echo "[$name] Complete"
 
 # self deleting
 rm -rf "setup.sh"
+
+# reset setup.sh file
+git reset -- setup.sh

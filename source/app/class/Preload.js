@@ -30,8 +30,8 @@ export default class Preload {
     this.createTextLoader();
 
     this.loader = new LoadQueue(false);
-    this.loader.on('error', this.handleFileError, this);
-    this.loader.on('fileload', this.handleFileLoad, this);
+    this.loader.on('error', this.constructor.handleFileError, this);
+    this.loader.on('fileload', this.constructor.handleFileLoad, this);
     this.loader.on('progress', this.handleProgress.bind(this), this);
     this.loader.on('complete', this.handleComplete.bind(this, () => resolve()));
     this.loader.loadManifest(config.manifest);

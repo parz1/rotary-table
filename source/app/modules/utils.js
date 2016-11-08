@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
 import { Container, Shape, Graphics, Text } from 'EaselJS';
 
 /**
@@ -8,12 +10,12 @@ import { Container, Shape, Graphics, Text } from 'EaselJS';
 /**
  * @alias module:Utility
  */
-let utils = module.exports = {};
+const utils = module.exports = {};
 
 /**
  * Bluebird promise
  */
-utils._Promise = require('babel-runtime/core-js/promise')['default'];
+utils._Promise = require('babel-runtime/core-js/promise').default;
 
 /**
  * Set height and width of DOM element
@@ -48,7 +50,7 @@ utils.scaleXY = function (elem, amount) {
  * @param {boolean} Y If true centers registration point vertically
  */
 utils.centerReg = function (elem, x = false, y = false) {
-  let dims = elem.getBounds();
+  const dims = elem.getBounds();
 
   elem.regX = (x) ? dims.width / 2 : 0;
   elem.regY = (y) ? dims.height / 2 : 0;
@@ -60,7 +62,7 @@ utils.centerReg = function (elem, x = false, y = false) {
  * @param {object} Parent Parent of element
  */
 utils.centerObjectVertical = function (elem, parent) {
-  let parentDims = parent.getBounds();
+  const parentDims = parent.getBounds();
 
   elem.y = parentDims.height / 2;
 
@@ -73,7 +75,7 @@ utils.centerObjectVertical = function (elem, parent) {
  * @param {object} Parent Parent of element
  */
 utils.centerObjectHorizontal = function (elem, parent) {
-  let parentDims = parent.getBounds();
+  const parentDims = parent.getBounds();
 
   elem.x = parentDims.width / 2;
 
@@ -111,7 +113,7 @@ utils.centerObjectByDims = function (elem, w, h) {
  * @returns {object} CreateJS container object
  */
 utils.drawCtr = function (x = 0, y = 0) {
-  let ctr = new Container();
+  const ctr = new Container();
 
   ctr.x = x;
   ctr.y = y;
@@ -130,7 +132,7 @@ utils.drawCtr = function (x = 0, y = 0) {
  * @returns {object} CreateJS shape object
  */
 utils.drawShp = function (x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
-  let shp = new Shape(new Graphics().f(bgColor).dr(x, y, w, h));
+  const shp = new Shape(new Graphics().f(bgColor).dr(x, y, w, h));
 
   shp.setBounds(x, y, w, h);
 
@@ -146,7 +148,7 @@ utils.drawShp = function (x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
  * @returns {object} CreateJS text object
  */
 utils.drawText = function (content = '', font = '30px Arial', color = '#fff') {
-  let text = new Text(content, font, color);
+  const text = new Text(content, font, color);
 
   return text;
 };
@@ -164,7 +166,7 @@ utils.drawText = function (content = '', font = '30px Arial', color = '#fff') {
  * @returns {object} CreateJS container object
  */
 utils.drawTextShape = function (x, y, w, h, bgColor, content, color, font) {
-  let ctr = this.drawCtr(x, y),
+  const ctr = this.drawCtr(x, y),
     shp = this.drawShp(0, 0, w, h, bgColor),
     text = this.drawText(content, font, color);
 

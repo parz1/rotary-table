@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
 import { LoadQueue } from 'PreloadJS';
 import { Tween, Ease } from 'TweenJS';
+/* eslint-enable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
 
-import config from '../config.js';
-import utils from '../modules/utils.js';
-import Game from './Game.js';
+import config from '../config';
+import utils from '../modules/utils';
+import Game from './Game';
 
 /**
  * Preload class used for loading content
@@ -15,7 +17,7 @@ export default class Preload {
    * @returns {object} Promise Preload promise
    */
   constructor() {
-    return new utils._Promise((resolve, reject) => {
+    return new utils._Promise((resolve) => {
       this.init(resolve);
     });
   }
@@ -57,8 +59,8 @@ export default class Preload {
    * Handle errors from loader.
    * @param {object} Event Error event.
    */
-  handleFileError(e) {
-    console.warn('Error: ' + e.title);
+  static handleFileError(e) {
+    console.warn(`Error: ${e.title}`);
     console.log(e);
   }
 
@@ -66,7 +68,7 @@ export default class Preload {
    * Pushing loaded object to Game.IMAGES if file is image.
    * @param {object} Event Loaded item event.
    */
-  handleFileLoad(e) {
+  static handleFileLoad(e) {
     if (e.item.type === 'image') {
       Game.IMAGES[e.item.id] = e.result;
     }
@@ -76,7 +78,7 @@ export default class Preload {
    * Shows loading progress.
    */
   handleProgress() {
-    let percent = Math.round(this.loader.progress * 100);
+    const percent = Math.round(this.loader.progress * 100);
 
     console.log(`Loading ${percent} %`);
     this.textLoader.text = `Loading ${percent} %`;

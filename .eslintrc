@@ -1,6 +1,12 @@
 {
 	"extends": ["eslint-config-airbnb"],
   "rules": {
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "no-underscore-dangle": "off",
+    "one-var": "off"
+  },
+  "globals": {
+    "window": true,
+    "document": true
   }
 }

@@ -1,6 +1,6 @@
-import config from '../config.js';
-import utils from '../modules/utils.js';
-import Game from './Game.js';
+import config from '../config';
+import utils from '../modules/utils';
+import Game from './Game';
 
 /** MainMenu showing game menu */
 export default class MainMenu {

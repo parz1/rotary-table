@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
 import { Stage, Ticker } from 'EaselJS';
+/* eslint-enable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
 
-import config from '../config.js';
-import utils from '../modules/utils.js';
-import Preload from './Preload.js';
-import MainMenu from './MainMenu.js';
+import config from '../config';
+import utils from '../modules/utils';
+import Preload from './Preload';
+import MainMenu from './MainMenu';
 
 /** Main class representing game world. */
 export default class Game {
@@ -12,12 +14,11 @@ export default class Game {
    * Init the world, create main loader promise.
    */
   constructor() {
-    const initProm =
-      new utils._Promise((resolve, reject) => {
-        this.init(resolve);
-      })
-      .then(() => new Preload())
-      .then(() => new MainMenu());
+    new utils._Promise((resolve) => {
+      this.init(resolve);
+    })
+    .then(() => new Preload())
+    .then(() => new MainMenu());
   }
 
   /**
@@ -54,7 +55,7 @@ export default class Game {
       return;
     }
 
-    let w = window.innerWidth,
+    const w = window.innerWidth,
       h = window.innerHeight,
       ow = config.canvas.width,
       oh = config.canvas.height,

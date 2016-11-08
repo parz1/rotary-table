@@ -6,5 +6,5 @@ echo "-----------------------------------------------------------"
 echo "[$name] Cleaning repository"
 echo "-----------------------------------------------------------"
 cd ../
-rm -rf "nowy-folder"
+rm -rf ".git"
 echo "[$name] Complete"

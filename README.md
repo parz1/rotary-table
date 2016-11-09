@@ -5,7 +5,7 @@ This boilerplate allows you to write HTML5 application in CreateJS/ES6 using web
 ## Quick start
 
 1. Clone this repo using `git clone https://github.com/eskab/createjs-boilerplate.git`
-2. Run `npm install` and `bower install` to install dependencies
+2. Run `npm run setup` to clear repository, install dependencies and initialize new repository.
 3. Now you can run
   - `npm start` and see example app at <http://localhost:8080>
   - `npm run build` to build package (dist)

@@ -1,7 +1,7 @@
 {
-  "name": "createjsstarter",
+  "name": "createjs-boilerplate",
   "version": "0.0.1",
-  "description": "Starter for CreateJS projects",
+  "description": "CreateJS boilerplate with ES6 support",
   "main": "source/app/index.js",
   "scripts": {
     "start": "webpack-dev-server --inline",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/eskab/CreateJS-Starter.git"
+    "url": "git://github.com/eskab/createjs-boilerplate.git"
   },
   "keywords": [
     "createjs",
@@ -21,9 +21,9 @@
     "javascript",
     "webpack"
   ],
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eskab/CreateJS-Starter/issues"
+    "url": "https://github.com/eskab/createjs-boilerplate/issues"
   },
   "dependencies": {
     "babel-runtime": "^6.9.0",

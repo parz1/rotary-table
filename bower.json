@@ -1,6 +1,6 @@
 {
-  "name": "createjsstarter",
-  "description": "Starter for CreateJS projects",
+  "name": "createjs-boilerplate",
+  "description": "CreateJS boilerplate with ES6 support",
   "main": "source/app/index.js",
   "authors": [
     "eskab"
@@ -15,7 +15,7 @@
     "javascript",
     "webpack"
   ],
-  "homepage": "https://github.com/eskab/CreateJS-Starter",
+  "homepage": "https://github.com/eskab/createjs-boilerplate",
   "ignore": [
     "**/.*",
     "node_modules",

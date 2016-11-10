@@ -45,7 +45,7 @@ git init && git add . && git commit -m "Initial commit"
 echo "[$currentTime][$name] Complete"
 
 # self deleting
-rm -rf "setup.sh"
+rm -f "setup.sh"
 
 # reset setup.sh file
 git reset --hard

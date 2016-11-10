@@ -1,6 +1,6 @@
 {
   "name": "createjs-boilerplate",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "CreateJS boilerplate with ES6 support",
   "main": "source/app/index.js",
   "scripts": {

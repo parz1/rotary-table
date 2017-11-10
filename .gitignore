@@ -4,3 +4,4 @@ bower_components
 dist
 out
 npm-debug.log
+setup.sh

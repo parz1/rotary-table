@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline",
     "build": "webpack",
-    "setup": "sh ./setup.sh"
+    "setup": "sh ./setup.sh",
+    "postsetup": "rm ./setup.sh"
   },
   "repository": {
     "type": "git",

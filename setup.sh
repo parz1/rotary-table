@@ -43,9 +43,3 @@ echo "[$currentTime][$name] Initializing new repository"
 echo "$separator"
 git init && git add . && git commit -m "Initial commit"
 echo "[$currentTime][$name] Complete"
-
-# self deleting
-rm -f "setup.sh"
-
-# reset setup.sh file
-git reset --hard

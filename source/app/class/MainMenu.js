@@ -1,6 +1,6 @@
 import config from '../config';
+import store from '../store';
 import utils from '../modules/utils';
-import Game from './Game';
 
 /** MainMenu showing game menu */
 export default class MainMenu {
@@ -23,7 +23,7 @@ export default class MainMenu {
     utils.centerObjectByDims(this.title, config.canvas.width, config.canvas.height);
 
     this.ctr.addChild(this.title);
-    Game.STAGE.addChild(this.ctr);
+    store.stage.addChild(this.ctr);
   }
 
 }

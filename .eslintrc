@@ -5,7 +5,9 @@
     "no-underscore-dangle": "off",
     "one-var": "off",
     "func-names": ["error", "never"],
-    "no-console": "off"
+    "no-console": "off",
+    "comma-dangle": "off",
+    "class-methods-use-this": "off"
   },
   "globals": {
     "window": true,

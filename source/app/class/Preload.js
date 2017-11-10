@@ -1,17 +1,16 @@
 import config from '../config';
+import store from '../store';
 import utils from '../modules/utils';
-import Game from './Game';
 
 /**
  * Preload class used for loading content
  */
-export default class Preload {
+export default class Preloader {
 
   /**
    * Calling init method
-   * @returns {object} Promise Preload promise
    */
-  constructor() {
+  load() {
     return new Promise((resolve) => {
       this.init(resolve);
     });
@@ -25,9 +24,9 @@ export default class Preload {
     this.createTextLoader();
 
     this.loader = new createjs.LoadQueue(false);
-    this.loader.on('error', this.constructor.handleFileError, this);
-    this.loader.on('fileload', this.constructor.handleFileLoad, this);
-    this.loader.on('progress', this.handleProgress.bind(this), this);
+    this.loader.on('error', this.handleFileError.bind(this));
+    this.loader.on('fileload', this.handleFileLoad.bind(this));
+    this.loader.on('progress', this.handleProgress.bind(this));
     this.loader.on('complete', this.handleComplete.bind(this, () => resolve()));
     this.loader.loadManifest(config.manifest);
   }
@@ -39,14 +38,14 @@ export default class Preload {
     this.graphicLoader = utils.drawTextShape(0, 0, config.canvas.width, config.canvas.height, '#fff', 'Loading', '#9b59b6');
 
     this.textLoader = this.graphicLoader.getChildByName('mainText');
-    Game.STAGE.addChild(this.graphicLoader);
+    store.stage.addChild(this.graphicLoader);
   }
 
   /**
    * Erase graphic loader.
    */
   eraseTextLoader() {
-    Game.STAGE.removeChild(this.graphicLoader);
+    store.stage.removeChild(this.graphicLoader);
     this.graphicLoader = null;
   }
 
@@ -54,18 +53,18 @@ export default class Preload {
    * Handle errors from loader.
    * @param {object} Event Error event.
    */
-  static handleFileError(e) {
+  handleFileError(e) {
     console.warn(`Error: ${e.title}`);
     console.log(e);
   }
 
   /**
-   * Pushing loaded object to Game.IMAGES if file is image.
+   * Pushing loaded object to store.images if file is image.
    * @param {object} Event Loaded item event.
    */
-  static handleFileLoad(e) {
+  handleFileLoad(e) {
     if (e.item.type === 'image') {
-      Game.IMAGES[e.item.id] = e.result;
+      store.images[e.item.id] = e.result;
     }
   }
 

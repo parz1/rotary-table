@@ -1,6 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
-import { Container, Shape, Graphics, Text } from 'EaselJS';
 
 /**
  * Utility functions.
@@ -11,11 +9,6 @@ import { Container, Shape, Graphics, Text } from 'EaselJS';
  * @alias module:Utility
  */
 const utils = module.exports = {};
-
-/**
- * Bluebird promise
- */
-utils._Promise = require('babel-runtime/core-js/promise').default;
 
 /**
  * Set height and width of DOM element
@@ -113,7 +106,7 @@ utils.centerObjectByDims = function (elem, w, h) {
  * @returns {object} CreateJS container object
  */
 utils.drawCtr = function (x = 0, y = 0) {
-  const ctr = new Container();
+  const ctr = new createjs.Container();
 
   ctr.x = x;
   ctr.y = y;
@@ -132,7 +125,7 @@ utils.drawCtr = function (x = 0, y = 0) {
  * @returns {object} CreateJS shape object
  */
 utils.drawShp = function (x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
-  const shp = new Shape(new Graphics().f(bgColor).dr(x, y, w, h));
+  const shp = new createjs.Shape(new createjs.Graphics().f(bgColor).dr(x, y, w, h));
 
   shp.setBounds(x, y, w, h);
 
@@ -148,7 +141,7 @@ utils.drawShp = function (x = 0, y = 0, w = 0, h = 0, bgColor = '#000') {
  * @returns {object} CreateJS text object
  */
 utils.drawText = function (content = '', font = '30px Arial', color = '#fff') {
-  const text = new Text(content, font, color);
+  const text = new createjs.Text(content, font, color);
 
   return text;
 };

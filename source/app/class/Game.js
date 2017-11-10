@@ -1,7 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
-import { Stage, Ticker } from 'EaselJS';
-/* eslint-enable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
-
 import config from '../config';
 import utils from '../modules/utils';
 import Preload from './Preload';
@@ -14,11 +10,11 @@ export default class Game {
    * Init the world, create main loader promise.
    */
   constructor() {
-    new utils._Promise((resolve) => {
+    new Promise((resolve) => {
       this.init(resolve);
     })
-    .then(() => new Preload())
-    .then(() => new MainMenu());
+      .then(() => new Preload())
+      .then(() => new MainMenu());
   }
 
   /**
@@ -27,12 +23,12 @@ export default class Game {
    */
   init(resolve) {
     this.canvas = Game.CANVAS = document.getElementById(config.canvas.id);
-    this.stage = Game.STAGE = new Stage(this.canvas);
+    this.stage = Game.STAGE = new createjs.Stage(this.canvas);
 
     this.stage.enableMouseOver();
 
-    Ticker.setFPS(config.stage.fps);
-    Ticker.on('tick', this.ticker.bind(this));
+    createjs.Ticker.setFPS(config.stage.fps);
+    createjs.Ticker.on('tick', this.ticker.bind(this));
 
     this.resize();
     window.onresize = this.resize.bind(this);

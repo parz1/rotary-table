@@ -1,8 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
-import { LoadQueue } from 'PreloadJS';
-import { Tween, Ease } from 'TweenJS';
-/* eslint-enable import/no-extraneous-dependencies, import/extensions, import/no-unresolved */
-
 import config from '../config';
 import utils from '../modules/utils';
 import Game from './Game';
@@ -17,7 +12,7 @@ export default class Preload {
    * @returns {object} Promise Preload promise
    */
   constructor() {
-    return new utils._Promise((resolve) => {
+    return new Promise((resolve) => {
       this.init(resolve);
     });
   }
@@ -29,7 +24,7 @@ export default class Preload {
   init(resolve) {
     this.createTextLoader();
 
-    this.loader = new LoadQueue(false);
+    this.loader = new createjs.LoadQueue(false);
     this.loader.on('error', this.constructor.handleFileError, this);
     this.loader.on('fileload', this.constructor.handleFileLoad, this);
     this.loader.on('progress', this.handleProgress.bind(this), this);
@@ -90,8 +85,8 @@ export default class Preload {
    * @param {object} Callback Callback - resolve loader promise
    */
   handleComplete(cb) {
-    Tween.get(this.graphicLoader)
-      .to({ y: -config.canvas.height }, 1000, Ease.cubicInOut)
+    createjs.Tween.get(this.graphicLoader)
+      .to({ y: -config.canvas.height }, 1000, createjs.Ease.cubicInOut)
       .call(this.eraseTextLoader)
       .call(cb);
   }

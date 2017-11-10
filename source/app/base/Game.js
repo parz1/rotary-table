@@ -30,7 +30,7 @@ export default class Game {
 
     store.stage.enableMouseOver();
 
-    createjs.Ticker.setFPS(config.stage.fps);
+    createjs.Ticker.framerate = config.stage.fps;
     createjs.Ticker.on('tick', this.ticker);
 
     this.resizer.resize();

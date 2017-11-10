@@ -23,13 +23,21 @@ module.exports = {
   devServer: {
     contentBase: './source/'
   },
+  devtool: 'source-map',
   module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: ['source-map-loader'],
+        enforce: 'pre'
+      }
+    ],
     preLoaders: [
       {
         test: /\.js$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      }
     ],
     loaders: [
       {

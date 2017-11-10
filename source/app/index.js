@@ -1,6 +1,6 @@
 import '../index.html';
 import '../styles/app.scss';
 
-import Game from './class/Game';
+import Game from './base/Game';
 
 window.onload = new Game();

@@ -1,24 +1,30 @@
-import ResizeController from './Resize';
+import PreloaderModel from '../model/Preloader';
+import PreloaderView from '../view/Preloader';
+import MainMenuView from '../view/MainMenu';
 import PreloaderController from './Preloader';
+import ResizeController from './Resize';
 import MainMenuController from './MainMenu';
-import GameView from '../view/Game';
 
 export default class GameController {
-  constructor(context, config) {
+  constructor(view, context, config) {
+    this.view = view;
     this.context = context;
     this.config = config;
   }
 
   create() {
-    this.view = new GameView(this.context, this.config);
-
     this.resize = new ResizeController(this.context, this.view.stage, this.config);
 
-    this.preloader = new PreloaderController(this.view.stage, this.config);
+    this.preloaderModel = new PreloaderModel(this.config);
+    this.preloaderView = new PreloaderView(this.preloaderModel, this.view.stage, this.config);
+    this.preloader = new PreloaderController(
+      this.preloaderModel, this.preloaderView, this.config
+    );
     this.preloader.create();
 
-    this.preloader.view.preloaderHidden.attach(() => {
-      this.mainMenu = new MainMenuController(this.view.stage, this.config);
+    this.preloaderView.preloaderHidden.attach(() => {
+      this.mainMenuView = new MainMenuView(this.view.stage, this.config);
+      this.mainMenu = new MainMenuController(this.mainMenuView, this.view.stage, this.config);
       this.mainMenu.create();
     });
   }

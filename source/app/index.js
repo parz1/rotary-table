@@ -2,11 +2,13 @@ import '../index.html';
 import '../styles/app.scss';
 
 import config from './config';
-import GameController from './controllers/Game';
+import GameController from './controller/Game';
+import GameView from './view/Game';
 
 window.onload = () => {
   const context = document.getElementById(config.canvas.id);
-  const gameController = new GameController(context, config);
+  const gameView = new GameView(context, config);
+  const gameController = new GameController(gameView, context, config);
 
   gameController.create();
 };

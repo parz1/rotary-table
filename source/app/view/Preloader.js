@@ -8,9 +8,11 @@ export default class PreloaderView {
     this.config = config;
 
     this.model.progressed.attach((sender, { progress }) => {
+      console.log(`Loading progress: ${progress}%`);
       this.updateTextLoader(`Loading: ${progress}%`);
     });
     this.model.completed.attach(() => {
+      console.log('Loading completed');
       this.animate();
     });
 
@@ -28,7 +30,9 @@ export default class PreloaderView {
   }
 
   updateTextLoader(value) {
-    this.textLoader.text = value;
+    if (this.textLoader) {
+      this.textLoader.text = value;
+    }
   }
 
   /**

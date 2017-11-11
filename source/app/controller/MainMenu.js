@@ -1,13 +1,10 @@
-import MainMenuView from '../view/MainMenu';
-
 export default class MainMenuController {
-  constructor(stage, config) {
-    this.stage = stage;
+  constructor(view, config) {
+    this.view = view;
     this.config = config;
   }
 
   create() {
-    this.view = new MainMenuView(this.stage, this.config);
     this.view.render();
   }
 }

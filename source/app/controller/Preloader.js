@@ -1,17 +1,13 @@
-import PreloaderModel from '../model/Preloader';
-import PreloaderView from '../view/Preloader';
-
 export default class PreloaderController {
-  constructor(stage, config) {
-    this.stage = stage;
+  constructor(model, view, config) {
+    this.model = model;
+    this.view = view;
+
     this.config = config;
   }
 
   create() {
-    this.model = new PreloaderModel(this.config);
-    this.model.load();
-
-    this.view = new PreloaderView(this.model, this.stage, this.config);
     this.view.createTextLoader();
+    this.model.load();
   }
 }

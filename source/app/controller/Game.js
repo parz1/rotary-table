@@ -1,7 +1,7 @@
 import ResizeController from './Resize';
 import PreloaderController from './Preloader';
 import MainMenuController from './MainMenu';
-import GameView from '../views/Game';
+import GameView from '../view/Game';
 
 export default class GameController {
   constructor(context, config) {
@@ -17,7 +17,7 @@ export default class GameController {
     this.preloader = new PreloaderController(this.view.stage, this.config);
     this.preloader.create();
 
-    this.preloader.loader.on('complete', () => {
+    this.preloader.view.preloaderHidden.attach(() => {
       this.mainMenu = new MainMenuController(this.view.stage, this.config);
       this.mainMenu.create();
     });

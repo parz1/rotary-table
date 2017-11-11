@@ -1,4 +1,4 @@
-import MainMenuView from '../views/MainMenu';
+import MainMenuView from '../view/MainMenu';
 
 export default class MainMenuController {
   constructor(stage, config) {

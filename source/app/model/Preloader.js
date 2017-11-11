@@ -1,9 +1,12 @@
+import Event from './Event';
+
 export default class PreloaderModel {
-  constructor(config, callbacks) {
+  constructor(config) {
     this.config = config;
     this.images = {};
-    this.handleProgress = callbacks.handleProgress;
-    this.handleComplete = callbacks.handleComplete;
+
+    this.progressed = new Event(this);
+    this.completed = new Event(this);
 
     this.init();
   }
@@ -12,8 +15,8 @@ export default class PreloaderModel {
     this.loader = new createjs.LoadQueue(false);
     this.loader.on('error', this.handleFileError.bind(this));
     this.loader.on('fileload', this.handleFileLoad.bind(this));
-    this.loader.on('progress', this.handleProgress);
-    this.loader.on('complete', this.handleComplete);
+    this.loader.on('progress', this.handleProgress.bind(this));
+    this.loader.on('complete', this.handleComplete.bind(this));
   }
 
   load() {
@@ -37,5 +40,15 @@ export default class PreloaderModel {
     if (e.item.type === 'image') {
       this.images[e.item.id] = e.result;
     }
+  }
+
+  handleProgress(e) {
+    const progress = Math.round(e.progress * 100);
+
+    this.progressed.notify({ progress });
+  }
+
+  handleComplete() {
+    this.completed.notify();
   }
 }

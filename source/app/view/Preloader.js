@@ -1,9 +1,20 @@
+import Event from '../model/Event';
 import utils from '../utils';
 
 export default class PreloaderView {
-  constructor(stage, config) {
+  constructor(model, stage, config) {
+    this.model = model;
     this.stage = stage;
     this.config = config;
+
+    this.model.progressed.attach((sender, { progress }) => {
+      this.updateTextLoader(`Loading: ${progress}%`);
+    });
+    this.model.completed.attach(() => {
+      this.animate();
+    });
+
+    this.preloaderHidden = new Event(this);
   }
 
   /**
@@ -36,6 +47,9 @@ export default class PreloaderView {
   animate() {
     createjs.Tween.get(this.graphicLoader)
       .to({ y: -this.config.canvas.height }, 1000, createjs.Ease.cubicInOut)
-      .call(this.eraseTextLoader);
+      .call(this.eraseTextLoader)
+      .call(() => {
+        this.preloaderHidden.notify();
+      });
   }
 }

@@ -1,11 +1,15 @@
-import store from '../store';
-import config from '../config';
-import utils from '../modules/utils';
+import utils from '../utils';
 
-export default class {
-  constructor() {
+export default class ResizeController {
+  constructor(context, stage, config) {
+    this.context = context;
+    this.stage = stage;
+
     this.canvasWidth = config.canvas.width;
     this.canvasHeight = config.canvas.height;
+
+    this.resize();
+    window.onresize = () => this.resize();
   }
 
   get width() {
@@ -29,9 +33,10 @@ export default class {
   }
 
   resize() {
-    utils.setWH(store.canvas, this.scaledWidth, this.scaledHeight, true);
-    utils.scaleXY(store.stage, this.scale);
+    utils.setWH(this.context, this.scaledWidth, this.scaledHeight, true);
+    utils.scaleXY(this.stage, this.scale);
 
-    store.stage.update();
+    // to be changed
+    this.stage.update();
   }
 }

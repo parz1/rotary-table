@@ -1,9 +1,9 @@
+import config from '@/config';
+import GameController from '@/controller/Game';
+import GameView from '@/view/Game';
+
 import '../index.html';
 import '../styles/app.scss';
-
-import config from './config';
-import GameController from './controller/Game';
-import GameView from './view/Game';
 
 window.onload = () => {
   const context = document.getElementById(config.canvas.id);

@@ -1,4 +1,4 @@
-import Event from './Event';
+import Event from '@/model/Event';
 
 export default class PreloaderModel {
   constructor(config) {

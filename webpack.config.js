@@ -6,7 +6,7 @@ const cssExtractor = new ExtractTextPlugin('styles.css');
 const htmlExtractor = new ExtractTextPlugin('../index.html');
 
 module.exports = {
-  context: path.resolve('source'),
+  context: path.resolve('./source'),
   entry: {
     app: './app/index.js',
     createjs: '../node_modules/createjs/builds/1.0.0/createjs.js'
@@ -81,6 +81,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.css', '.scss', '.html', '.js'],
+    alias: {
+      '@': path.resolve('./source/app/')
+    },
     modulesDirectories: ['node_modules']
   },
   eslint: {

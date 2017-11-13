@@ -1,9 +1,9 @@
-import PreloaderModel from '../model/Preloader';
-import PreloaderView from '../view/Preloader';
-import MainMenuView from '../view/MainMenu';
-import PreloaderController from './Preloader';
-import ResizeController from './Resize';
-import MainMenuController from './MainMenu';
+import PreloaderModel from '@/model/Preloader';
+import PreloaderView from '@/view/Preloader';
+import MainMenuView from '@/view/MainMenu';
+import PreloaderController from '@/controller/Preloader';
+import ResizeController from '@/controller/Resize';
+import MainMenuController from '@/controller/MainMenu';
 
 export default class GameController {
   constructor(view, context, config) {

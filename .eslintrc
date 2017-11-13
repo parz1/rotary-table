@@ -1,8 +1,16 @@
 {
 	"extends": ["eslint-config-airbnb"],
+  "settings": {
+    "import/resolver": {
+      webpack: {
+        config: "webpack.config.js"
+      }
+    }
+  },
   "rules": {
     "linebreak-style": "off",
     "no-underscore-dangle": "off",
+    "import/no-unresolved": [2, { "ignore": ["@"] }],
     "one-var": "off",
     "func-names": ["error", "never"],
     "no-console": "off",

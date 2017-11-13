@@ -1,5 +1,5 @@
-import Event from '../model/Event';
-import utils from '../utils';
+import Event from '@/model/Event';
+import utils from '@/utils';
 
 export default class PreloaderView {
   constructor(model, stage, config) {

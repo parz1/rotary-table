@@ -1,12 +1,15 @@
 import utils from '@/utils';
 
-export default class ResizeController {
+export default class ResizeService {
   constructor(context, stage, config) {
     this.context = context;
     this.stage = stage;
 
     this.canvasWidth = config.canvas.width;
     this.canvasHeight = config.canvas.height;
+
+    this.resize();
+    this.attach();
   }
 
   get width() {
@@ -27,6 +30,10 @@ export default class ResizeController {
 
   get scaledHeight() {
     return this.canvasHeight * this.scale;
+  }
+
+  attach() {
+    window.addEventListener('resize', this.resize.bind(this));
   }
 
   resize() {

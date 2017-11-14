@@ -7,9 +7,6 @@ export default class ResizeController {
 
     this.canvasWidth = config.canvas.width;
     this.canvasHeight = config.canvas.height;
-
-    this.resize();
-    window.onresize = () => this.resize();
   }
 
   get width() {

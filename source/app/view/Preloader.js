@@ -7,6 +7,10 @@ export default class PreloaderView {
     this.stage = stage;
     this.config = config;
 
+    this.model.started.attach(() => {
+      console.log('Loading started');
+      this.createTextLoader();
+    });
     this.model.progressed.attach((sender, { progress }) => {
       console.log(`Loading progress: ${progress}%`);
       this.updateTextLoader(`Loading: ${progress}%`);
@@ -16,7 +20,7 @@ export default class PreloaderView {
       this.animate();
     });
 
-    this.preloaderHidden = new Event(this);
+    this.animationFinished = new Event(this);
   }
 
   /**
@@ -53,7 +57,7 @@ export default class PreloaderView {
       .to({ y: -this.config.canvas.height }, 1000, createjs.Ease.cubicInOut)
       .call(this.eraseTextLoader)
       .call(() => {
-        this.preloaderHidden.notify();
+        this.animationFinished.notify();
       });
   }
 }

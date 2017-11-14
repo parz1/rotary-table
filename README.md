@@ -23,3 +23,4 @@ Prod/dev environment               |
 Script for clean environment setup | ✔
 Add post-setup script              | ✔
 Rewrite utils                      |
+Rewrite resize                     |

@@ -9,10 +9,6 @@ export default class Event {
   }
 
   notify(args) {
-    let index;
-
-    for (index = 0; index < this.listeners.length; index += 1) {
-      this.listeners[index](this.sender, args);
-    }
+    this.listeners.forEach(listener => listener(this.sender, args));
   }
 }

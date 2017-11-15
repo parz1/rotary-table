@@ -1,8 +1,8 @@
-import Event from '@/model/Event';
+import App from '@/App';
 import utils from '@/utils';
 
-export default class PreloaderView {
-  constructor(model, stage, config) {
+App.service('PreloaderView', class PreloaderView {
+  constructor(model, stage, config, EventDispatcher) {
     this.model = model;
     this.stage = stage;
     this.config = config;
@@ -20,7 +20,7 @@ export default class PreloaderView {
       this.animate();
     });
 
-    this.animationFinished = new Event(this);
+    this.animationFinished = EventDispatcher.instance.call(this);
   }
 
   /**
@@ -60,4 +60,4 @@ export default class PreloaderView {
         this.animationFinished.notify();
       });
   }
-}
+}, 'PreloaderModel', 'Stage', 'config', 'EventDispatcher');

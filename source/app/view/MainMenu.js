@@ -1,6 +1,7 @@
+import App from '@/App';
 import utils from '@/utils';
 
-export default class MainMenuView {
+App.service('MainMenuView', class MainMenuView {
   constructor(stage, config) {
     this.stage = stage;
     this.config = config;
@@ -15,4 +16,4 @@ export default class MainMenuView {
     this.ctr.addChild(this.title);
     this.stage.addChild(this.ctr);
   }
-}
+}, 'Stage', 'config');

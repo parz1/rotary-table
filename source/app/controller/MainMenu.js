@@ -1,4 +1,6 @@
-export default class MainMenuController {
+import App from '@/App';
+
+App.service('MainMenuController', class MainMenuController {
   constructor(view, RouteService) {
     this.view = view;
     this.RouteService = RouteService;
@@ -11,4 +13,4 @@ export default class MainMenuController {
       this.view.render();
     }
   }
-}
+}, 'MainMenuView', 'RouteService');

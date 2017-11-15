@@ -1,4 +1,6 @@
-export default class Preloader {
+import App from '@/App';
+
+App.service('PreloaderController', class PreloaderController {
   constructor(config, model, view, PreloaderService, RouteService) {
     this.config = config;
     this.model = model;
@@ -27,4 +29,4 @@ export default class Preloader {
   load() {
     this.PreloaderService.load();
   }
-}
+}, 'config', 'PreloaderModel', 'PreloaderView', 'PreloaderService', 'RouteService');

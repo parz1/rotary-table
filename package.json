@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.9.0",
+    "bottlejs": "^1.6.1",
     "createjs": "^1.0.1"
   },
   "devDependencies": {

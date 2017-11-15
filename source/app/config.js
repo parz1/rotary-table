@@ -1,3 +1,5 @@
+import App from '@/App';
+
 /**
  * @namespace Config
  *
@@ -11,7 +13,7 @@
  * @property {object} stage - default stage settings
  * @property {number} stage.fps - stage framerate
  */
-module.exports = {
+App.constant('config', {
   manifest: [
     // example jpg
     // random images from imgur
@@ -34,4 +36,4 @@ module.exports = {
   stage: {
     fps: 40,
   },
-};
+});

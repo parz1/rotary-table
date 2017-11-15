@@ -1,8 +1,8 @@
-import Event from '@/model/Event';
+import App from '@/App';
 
-export default class Route {
-  constructor() {
-    this.routeChanged = new Event(this);
+App.service('RouteService', class Route {
+  constructor(EventDispatcher) {
+    this.routeChanged = EventDispatcher.instance(this);
 
     this.routeChanged.attach(this.notifyAboutRouteChanges.bind(this));
   }
@@ -10,4 +10,4 @@ export default class Route {
   notifyAboutRouteChanges(sender, routeName) {
     console.log(`Route changed to: ${routeName}`);
   }
-}
+}, 'EventDispatcher');

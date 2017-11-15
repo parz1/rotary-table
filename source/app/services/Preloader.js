@@ -1,13 +1,13 @@
-import Event from '@/model/Event';
+import App from '@/App';
 
-export default class PreloaderService {
-  constructor(config) {
+App.service('PreloaderService', class PreloaderService {
+  constructor(config, EventDispatcher) {
     this.config = config;
 
-    this.started = new Event(this);
-    this.fileLoaded = new Event(this);
-    this.progressed = new Event(this);
-    this.completed = new Event(this);
+    this.started = EventDispatcher.instance(this);
+    this.fileLoaded = EventDispatcher.instance(this);
+    this.progressed = EventDispatcher.instance(this);
+    this.completed = EventDispatcher.instance(this);
 
     this.init();
   }
@@ -45,4 +45,4 @@ export default class PreloaderService {
   handleComplete() {
     this.completed.notify();
   }
-}
+}, 'config', 'EventDispatcher');

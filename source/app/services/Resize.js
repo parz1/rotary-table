@@ -1,6 +1,7 @@
+import App from '@/App';
 import utils from '@/utils';
 
-export default class ResizeService {
+App.service('ResizeService', class ResizeService {
   constructor(context, stage, config) {
     this.context = context;
     this.stage = stage;
@@ -43,4 +44,4 @@ export default class ResizeService {
     // to be changed
     this.stage.update();
   }
-}
+}, 'context', 'Stage', 'config');

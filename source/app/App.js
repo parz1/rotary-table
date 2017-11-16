@@ -6,18 +6,22 @@ class App {
   constructor() {
     if (!instance) {
       instance = this;
+      this.assign();
     }
 
+    return instance;
+  }
+
+  assign() {
     this.bottle = new Bottle();
 
-    this.constant = this.bottle.constant.bind(this.bottle);
-    this.service = this.bottle.service.bind(this.bottle);
-    this.instanceFactory = this.bottle.instanceFactory.bind(this.bottle);
-    this.factory = this.bottle.factory.bind(this.bottle);
-    this.digest = this.bottle.digest.bind(this.bottle);
-    this.container = this.bottle.container;
+    Object.entries(this.bottle).forEach(([key]) => {
+      this[key] = this.bottle[key];
+    });
 
-    return instance;
+    Object.entries(Object.getPrototypeOf(this.bottle)).forEach(([key]) => {
+      this[key] = this.bottle[key].bind(this.bottle);
+    });
   }
 }
 

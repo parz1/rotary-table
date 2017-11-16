@@ -1,7 +1,7 @@
 /* eslint-disable prefer-arrow-callback */
 import App from '@/App';
 
-App.service('GameView', class GameView {
+App.service('MainView', class MainView {
   constructor(context, config) {
     this.stage = new createjs.Stage(context);
     this.config = config;
@@ -15,6 +15,6 @@ App.service('GameView', class GameView {
   }
 }, 'context', 'config');
 
-App.service('Stage', function (GameView) {
-  return GameView.stage;
-}, 'GameView');
+App.service('Stage', function (MainView) {
+  return MainView.stage;
+}, 'MainView');

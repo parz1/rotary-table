@@ -12,13 +12,13 @@ import PreloaderModel from '@/model/Preloader';
 import EventDispatcher from '@/model/Event';
 import PreloaderView from '@/view/Preloader';
 import MainMenuView from '@/view/MainMenu';
-import GameView from '@/view/Game';
+import MainView from '@/view/Main';
 
 import '../index.html';
 import '../styles/app.scss';
 
 window.addEventListener('load', () => {
-  App.container.GameView.render();
+  App.container.MainView.render();
 
   App.digest(['MainMenuController', 'ResizeService']);
   App.container.PreloaderController.load();

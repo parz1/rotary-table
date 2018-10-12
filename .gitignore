@@ -1,7 +1,0 @@
-node_modules
-bower_components
-.idea
-dist
-out
-npm-debug.log
-setup.sh

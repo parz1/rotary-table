@@ -1,6 +1,6 @@
 import { createjs } from "createjs";
 
-import { createDOMStage, getDOMStage } from "@/utils";
+import { createDOMStage, getDOMStage, handleResize } from "@/utils";
 
 import "./styles.css";
 
@@ -12,6 +12,9 @@ const init = () => {
   window.onload = () => {
     const canvas = getDOMStage();
     const stage = new createjs.Stage(canvas);
+
+    handleResize(canvas, stage);
+    window.onresize = () => handleResize(canvas, stage);
   };
 };
 

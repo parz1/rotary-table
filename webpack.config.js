@@ -9,6 +9,7 @@ const nodeModulesPath = path.resolve(__dirname, "node_modules");
 
 module.exports = {
   context: rootPath,
+  mode: "development",
   entry: {
     createjs: path.join(nodeModulesPath, "/createjs/builds/1.0.0/createjs.js"),
     app: path.join(rootPath, "/app.js"),
@@ -49,11 +50,15 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
+    new webpack.SourceMapDevToolPlugin({
+      filename: "[name].js.map",
+      exclude: ["createjs.js"],
+    }),
   ],
   resolve: {
     alias: {
       "@": rootPath,
-      createjs: path.resolve(__dirname, "source/createjs"),
+      createjs: path.resolve(rootPath, "createjs"),
     },
   },
 };

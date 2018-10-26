@@ -1,4 +1,5 @@
 import { createjs } from "createjs";
+
 import { createDOMStage, getDOMStage } from "@/utils";
 
 import "./styles.css";

@@ -1,3 +1,5 @@
+import "./polyfills";
+
 import { createjs } from "createjs";
 
 import { createDOMStage, getDOMStage, handleResize } from "@/utils";

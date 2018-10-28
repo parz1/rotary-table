@@ -5,6 +5,16 @@ A small boilerplate that lets you quickly start a new CreateJS project.
 ## Getting started
 
 ```
-1. git clone ...
-2. bash script
+# 0. Make sure you have installed node and yarn
+
+# 1. Clone the repository
+git clone https://github.com/szymkab/createjs-boilerplate.git my-project
+
+# 2. Enter you project
+cd my-project
+
+# 3. Fire setup script (it will remove git files, setup script and initialize new repository)
+yarn setup
+
+# 4. Start development
 ```

@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+// TODO
+// add: 
+// 1. error scenarios
+// 2. dependency install
+// 3. readme edition
+
 const shell = require("shelljs");
 const { exec } = require("child_process");
 const path = require("path");

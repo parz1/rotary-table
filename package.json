@@ -11,7 +11,9 @@
     "lint": "eslint -- .",
     "lint:fix": "eslint --fix -- .",
     "precommit": "yarn lint:fix",
-    "test": "jest"
+    "test": "jest",
+    "presetup": "yarn add shelljs",
+    "setup": "node ./setup.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",

@@ -16,5 +16,9 @@ cd my-project
 # 3. Fire setup script (it will remove git files, setup script and initialize new repository)
 yarn setup
 
-# 4. Start development
+# 4. Install dependencies
+yarn install
+
+# 5. Start development
+yarn start
 ```

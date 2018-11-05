@@ -1,6 +1,7 @@
 # CreateJS boilerplate
 
 A small boilerplate that lets you quickly start a new CreateJS project.
+This starter will be updated as soon as new CreateJS ES6 package comes out!
 
 ## Getting started
 

@@ -1,6 +1,6 @@
 import "./polyfills";
 
-import { createjs } from "createjs";
+import { Stage } from "@createjs/EaselJS";
 
 import { createDOMStage, getDOMStage, handleResize } from "@/utils";
 
@@ -13,7 +13,7 @@ const init = () => {
 
   window.onload = () => {
     const canvas = getDOMStage();
-    const stage = new createjs.Stage(canvas);
+    const stage = new Stage(canvas);
 
     handleResize(canvas, stage);
     window.onresize = () => handleResize(canvas, stage);

@@ -1,4 +1,10 @@
 // TODO
 // legacy package
 // this is because there is no es6 createjs package 
-export const createjs = window.createjs;
+const createjs = window.createjs;
+
+export const Stage = createjs.Stage;
+export const Container = createjs.Container;
+export const Shape = createjs.Shape;
+
+export default createjs;

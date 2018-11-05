@@ -58,7 +58,8 @@ module.exports = {
   resolve: {
     alias: {
       "@": rootPath,
-      createjs: path.resolve(rootPath, "createjs"),
+      "@createjs/EaselJS": path.resolve(rootPath, "createjs"),
+      "@createjs": path.resolve(rootPath, "createjs"),
     },
   },
 };

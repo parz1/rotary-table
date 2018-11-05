@@ -1,19 +1,16 @@
-// todo
-// move to config
-const CANVAS_WIDTH = 1920;
-const CANVAS_HEIGHT = 1080;
+import { CONFIG } from "@/config";
 
 export const calculateScale = () =>
   Math.min(
-    window.innerWidth / CANVAS_WIDTH,
-    window.innerHeight / CANVAS_HEIGHT,
+    window.innerWidth / CONFIG.canvasWidth,
+    window.innerHeight / CONFIG.canvasHeight,
   );
 
 export const handleResize = (canvas, stage) => {
   const scale = calculateScale();
 
-  const width = CANVAS_WIDTH * scale;
-  const height = CANVAS_HEIGHT * scale;
+  const width = CONFIG.canvasWidth * scale;
+  const height = CONFIG.canvasHeight * scale;
 
   canvas.width = width;
   canvas.height = height;

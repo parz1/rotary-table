@@ -29,11 +29,7 @@ const init = () => {
     shape.regX = 400;
     shape.regY = 100;
 
-    const welcomeText = new Text(
-      "CreateJS Boilerplate",
-      "50px Courier",
-      "#EB4646",
-    );
+    const welcomeText = new Text("CreateJS Boilerplate", "50px Courier", "#EB4646");
     welcomeText.regX = welcomeText.getBounds().width / 2;
     welcomeText.regY = welcomeText.getBounds().height / 2;
     welcomeText.x = CONFIG.canvasWidth / 2;

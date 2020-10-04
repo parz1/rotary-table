@@ -15,12 +15,14 @@ module.exports = {
     createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
     app: path.join(rootPath, "/app.js"),
   },
+  devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
   },
   devServer: {
     contentBase: rootPath,
+    open: true,
     stats: {
       warnings: false,
     },
@@ -54,10 +56,9 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: "[name].js.map",
-      exclude: ["createjs.js"],
-    }),
+    // new webpack.SourceMapDevToolPlugin({
+    //   filename: "[file].js[query]",
+    // }),
     new ESLintPlugin(),
   ],
   resolve: {

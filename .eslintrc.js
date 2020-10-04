@@ -1,6 +1,6 @@
 module.exports = {
   parser: "babel-eslint",
-  extends: "eslint:recommended",
+  extends: ["eslint:recommended", "prettier"],
   rules: {
     quotes: ["error", "double"],
     "eol-last": ["error", "always"],

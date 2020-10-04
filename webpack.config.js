@@ -11,10 +11,7 @@ module.exports = {
   context: rootPath,
   mode: "development",
   entry: {
-    createjs: path.join(
-      nodeModulesPath,
-      "/createjs/builds/createjs-2015.11.26.combined.js",
-    ),
+    createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
     app: path.join(rootPath, "/app.js"),
   },
   devtool: "inline-source-map",

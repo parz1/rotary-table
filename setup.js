@@ -11,7 +11,7 @@ const README_CONTENT = `
 Some informations
 `;
 
-const callback = string => err => {
+const callback = (string) => (err) => {
   if (err) {
     throw err;
   }

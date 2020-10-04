@@ -1,10 +1,7 @@
 import { CONFIG } from "@/config";
 
 export const calculateScale = () =>
-  Math.min(
-    window.innerWidth / CONFIG.canvasWidth,
-    window.innerHeight / CONFIG.canvasHeight,
-  );
+  Math.min(window.innerWidth / CONFIG.canvasWidth, window.innerHeight / CONFIG.canvasHeight);
 
 export const handleResize = (canvas, stage) => {
   const scale = calculateScale();

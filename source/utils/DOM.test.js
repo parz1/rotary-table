@@ -6,11 +6,11 @@ describe("DOM", () => {
     expect(canvas).toBeTruthy();
   });
 
-  it ("gets canvas", () => {
+  it("gets canvas", () => {
     const body = document.getElementsByTagName("body")[0];
     const canvas = createDOMStage();
     body.append(canvas);
 
     expect(getDOMStage()).toBeTruthy();
-  })
+  });
 });

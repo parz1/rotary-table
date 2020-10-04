@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -12,10 +11,13 @@ module.exports = {
   context: rootPath,
   mode: "development",
   entry: {
-    createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
+    createjs: path.join(
+      nodeModulesPath,
+      "/createjs/builds/createjs-2015.11.26.combined.js",
+    ),
     app: path.join(rootPath, "/app.js"),
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -44,8 +46,8 @@ module.exports = {
         loader: "imports-loader",
         options: {
           additionalCode: "window.createjs = {};",
-        }
-      }
+        },
+      },
     ],
   },
   plugins: [
@@ -56,9 +58,6 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: "[file].js[query]",
-    // }),
     new ESLintPlugin(),
   ],
   resolve: {
@@ -66,7 +65,6 @@ module.exports = {
       "@": rootPath,
       "@createjs/EaselJS": path.resolve(rootPath, "createjs"),
       "@createjs": path.resolve(rootPath, "createjs"),
-      "createjs": path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
     },
   },
-}
+};

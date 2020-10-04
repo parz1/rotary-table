@@ -1,6 +1,6 @@
 import "./polyfills";
 
-import { Stage, Container, Graphics, Shape, Ticker } from "@createjs/EaselJS";
+import { Stage, Graphics, Shape, Ticker, Text } from "@createjs/EaselJS";
 
 import { createDOMStage, getDOMStage, handleResize } from "@/utils";
 
@@ -22,14 +22,24 @@ const init = () => {
     const canvas = getDOMStage();
     const stage = new Stage(canvas);
 
-    const ctr = new Container();
-    stage.addChild(ctr);
-
     const graphics = new Graphics()
-      .beginFill("#ff0000")
-      .drawRect(0, 0, 100, 100);
+      .beginFill("#EBE97A")
+      .drawRect(CONFIG.canvasWidth / 2, CONFIG.canvasHeight / 2, 800, 200);
     const shape = new Shape(graphics);
-    ctr.addChild(shape);
+    shape.regX = 400;
+    shape.regY = 100;
+
+    const welcomeText = new Text(
+      "CreateJS Boilerplate",
+      "50px Courier",
+      "#EB4646",
+    );
+    welcomeText.regX = welcomeText.getBounds().width / 2;
+    welcomeText.regY = welcomeText.getBounds().height / 2;
+    welcomeText.x = CONFIG.canvasWidth / 2;
+    welcomeText.y = CONFIG.canvasHeight / 2;
+
+    stage.addChild(shape, welcomeText);
 
     handleResize(canvas, stage);
     window.onresize = () => handleResize(canvas, stage);

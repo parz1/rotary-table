@@ -24,12 +24,12 @@ const init = () => {
 
     const graphics = new Graphics()
       .beginFill("#EBE97A")
-      .drawRect(CONFIG.canvasWidth / 2, CONFIG.canvasHeight / 2, 800, 200);
+      .drawRect(CONFIG.canvasWidth / 2, CONFIG.canvasHeight / 2, 380, 100);
     const shape = new Shape(graphics);
-    shape.regX = 400;
-    shape.regY = 100;
+    shape.regX = 190;
+    shape.regY = 50;
 
-    const welcomeText = new Text("CreateJS Boilerplate", "50px Courier", "#EB4646");
+    const welcomeText = new Text("CreateJS Boilerplate", "26px Courier", "#EB4646");
     welcomeText.regX = welcomeText.getBounds().width / 2;
     welcomeText.regY = welcomeText.getBounds().height / 2;
     welcomeText.x = CONFIG.canvasWidth / 2;

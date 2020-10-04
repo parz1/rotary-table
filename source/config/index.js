@@ -1,5 +1,5 @@
 export const CONFIG = {
-  canvasWidth: 1920,
-  canvasHeight: 1080,
+  canvasWidth: 400,
+  canvasHeight: 900,
   framerate: 50,
 };

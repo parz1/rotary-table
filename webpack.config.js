@@ -1,23 +1,23 @@
-const path = require("path");
+const path = require('path')
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
-const rootPath = path.resolve(__dirname, "source");
-const nodeModulesPath = path.resolve(__dirname, "node_modules");
+const rootPath = path.resolve(__dirname, 'source')
+const nodeModulesPath = path.resolve(__dirname, 'node_modules')
 
 module.exports = {
   context: rootPath,
-  mode: "development",
+  mode: 'development',
   entry: {
-    createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
-    app: path.join(rootPath, "/app.js"),
+    createjs: path.join(nodeModulesPath, '/createjs/builds/createjs-2015.11.26.combined.js'),
+    app: path.join(rootPath, '/app.js'),
   },
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   devServer: {
     contentBase: rootPath,
@@ -31,37 +31,44 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
       },
       {
         test: /node_modules(\/|\\)(createjs)(\/|\\).*\.js$/,
-        loader: "imports-loader",
+        loader: 'imports-loader',
         options: {
-          additionalCode: "window.createjs = {};",
+          additionalCode: 'window.createjs = {};',
+        },
+      },
+      {
+        test: /\.(gif|png|jpg|jpeg|svg)$/,
+        loader: 'file-loader',
+        options: {
+          output: '/static/img/[name].[ext]',
         },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "CreateJS Boilerplate",
+      title: 'CreateJS Boilerplate',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     new ESLintPlugin(),
   ],
   resolve: {
     alias: {
-      "@": rootPath,
-      "@createjs/EaselJS": path.resolve(rootPath, "createjs"),
-      "@createjs": path.resolve(rootPath, "createjs"),
+      '@': rootPath,
+      '@createjs/EaselJS': path.resolve(rootPath, 'createjs'),
+      '@createjs': path.resolve(rootPath, 'createjs'),
     },
   },
-};
+}

@@ -1,12 +1,13 @@
 module.exports = {
-  parser: "babel-eslint",
-  extends: ["eslint:recommended", "prettier"],
+  parser: 'babel-eslint',
+  extends: ['eslint:recommended', 'prettier'],
   rules: {
-    quotes: ["error", "double"],
-    "eol-last": ["error", "always"],
+    quotes: ['error', 'single'],
+    'eol-last': ['error', 'always'],
+    'no-unused-vars': 1,
   },
   parserOptions: {
-    sourceType: "module",
+    sourceType: 'module',
   },
   env: {
     es6: true,
@@ -14,4 +15,4 @@ module.exports = {
     node: true,
     jest: true,
   },
-};
+}
